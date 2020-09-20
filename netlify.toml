@@ -1,0 +1,4 @@
+[build]
+base = "tenkaichi/"
+publish = "tenkaichi/build/"
+command = "npm run build"
