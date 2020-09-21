@@ -17,6 +17,8 @@ const gamesFinishGame = ({ state }, { gameId }) => {
 
     if (Object.values(state.games).filter(game => !game.finished).length === 0)
       history.push('/results')
+    else if (state.games[+gameId + 1] != null)
+      history.push('/game/' + (+gameId + 1))
   } catch (error) {
     console.error(error)
   }

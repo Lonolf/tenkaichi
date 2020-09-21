@@ -21,7 +21,7 @@ const gamesCreateGames = ({ state, filteredContenders }) => {
 
   state.games = contendersPairs.reduce((list, pair, index) => ({
     ...list,
-    [index + 1]: { conA: pair[0], conB: pair[1], scoreConA: 0, scoreConB: 0, finished: false },
+    [index + 1]: { gameId: index + 1, conA: pair[0], conB: pair[1], scoreConA: 0, scoreConB: 0, finished: false },
   }), {})
   history.push('/game/1')
 }

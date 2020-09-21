@@ -57,17 +57,9 @@ const game = {
   game_gameFinished_warning: 'Game terminato',
 }
 
-const menuBar = {
-  menuBar_title: 'Coding Salle',
-  menuBar_codingSalle_button: 'Salle',
-  menuBar_tankCombat_button: 'Tanks',
-  menuBar_golem_button: 'Golem',
-  menuBar_logout_button: 'logout',
-  menuBar_drawer_title: 'Menu',
-}
-
 const results = {
   results_title: 'Risultati',
+  gamesResults_title: 'Games',
 }
 
 export const italian = {
@@ -79,5 +71,4 @@ export const italian = {
   ...contendersSelector,
   ...game,
   ...results,
-  ...menuBar,
 }

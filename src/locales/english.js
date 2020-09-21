@@ -47,10 +47,28 @@ const toPrice = price => {
   return String(price.toFixed(2))
 }
 
+const contendersSelector = {
+  contendersSelector_title: 'Contendenti',
+  contendersSelector_name_label: 'Nome del contendente',
+}
+
+const game = {
+  game_title: 'Game',
+  game_gameFinished_warning: 'Game terminato',
+}
+
+const results = {
+  results_title: 'Risultati',
+  gamesResults_title: 'Round',
+}
+
 export const english = {
   locale: 'en',
   ...error,
   ...months,
   ...dates,
   toPrice,
+  ...contendersSelector,
+  ...game,
+  ...results,
 }

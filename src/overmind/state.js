@@ -5,9 +5,9 @@ const calcResults = state =>
     if (!game.finished) return results
 
     const newResults = { ...results }
-    if (game.scoreConA > 5 && game.scoreConB < 5)
+    if (game.scoreConA >= 5 && game.scoreConB < 5)
       newResults[game.conA] += 1
-    else if (game.scoreConA < 5 && game.scoreConB > 5)
+    else if (game.scoreConA < 5 && game.scoreConB >= 5)
       newResults[game.conB] += 1
 
     return newResults

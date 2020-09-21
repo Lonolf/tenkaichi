@@ -1,3 +1,5 @@
+import { history } from 'index'
+
 import contenders from './actions/contenders'
 import games from './actions/games'
 
@@ -20,8 +22,16 @@ const stopLoading = ({ state, value }) => {
     state.loading.splice(state.loading.indexOf(value))
 }
 
+const reset = ({ state }) => {
+  state.games = {}
+  state.contenders = {}
+
+  history.push('/')
+}
+
 export default {
   ...contenders,
   ...games,
   changeLogin,
+  reset,
 }

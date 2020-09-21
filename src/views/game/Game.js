@@ -37,18 +37,20 @@ const Game = () => {
   if (state.games[gameId] == null)
     return null
 
+  const game = state.games[gameId]
+
   return (
     <>
       <TopBar props={{ games: state.games, gameId }} />
       <ScoreCard props={{ state, gameId }} />
-      {state.games[gameId].finished
+      {game.finished
         ? <Typography style={{ color: 'red' }}>{translator.fromLabel('game_gameFinished_warning')}</Typography>
         : null}
       <Fab
         className={classes.fab}
         color='primary'
         onClick={() => actions.gamesFinishGame({ gameId })}
-        disabled={state.games[gameId].finished}
+        disabled={game.finished || (game.scoreConA === 0 && game.scoreConB === 0)}
       >
         <Check />
       </Fab>

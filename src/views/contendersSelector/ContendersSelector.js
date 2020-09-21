@@ -69,7 +69,7 @@ const ContendersSelector = () => {
       <List>
         <Divider />
         {contenders.map((contender, index) => (
-          <React.Fragment key={contender.contenderId}>
+          <React.Fragment key={index}>
             <ListItem>
               <TextField
                 placeholder={translator.fromLabel('contendersSelector_name_label')}
