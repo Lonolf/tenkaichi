@@ -8,7 +8,7 @@ const calcResults = state =>
     if (game.scoreConA > 5 && game.scoreConB < 5)
       newResults[game.conA] += 1
     else if (game.scoreConA < 5 && game.scoreConB > 5)
-      newResults[game.conA] += 1
+      newResults[game.conB] += 1
 
     return newResults
   }, Object.keys(state.contenders)
