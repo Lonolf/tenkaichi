@@ -55,6 +55,7 @@ const contendersSelector = {
 const game = {
   game_title: 'Game',
   game_gameFinished_warning: 'Game terminato',
+  game_lastGame_warning: 'Ultimo game',
 }
 
 const results = {

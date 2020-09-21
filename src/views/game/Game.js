@@ -43,6 +43,10 @@ const Game = () => {
     <>
       <TopBar props={{ games: state.games, gameId }} />
       <ScoreCard props={{ state, gameId }} />
+      <div style={{ height: 30 }} />
+      {state.games[+gameId + 1] != null
+        ? <Typography>{'Next game: ' + state.games[+gameId + 1].conA + ' vs ' + state.games[+gameId + 1].conB}</Typography>
+        : <Typography style={{ fontWeight: 'bold' }}>{translator.fromLabel('game_lastGame_warning')}</Typography>}
       {game.finished
         ? <Typography style={{ color: 'red' }}>{translator.fromLabel('game_gameFinished_warning')}</Typography>
         : null}
