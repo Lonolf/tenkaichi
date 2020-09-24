@@ -62,6 +62,14 @@ const results = {
   gamesResults_title: 'Round',
 }
 
+const rulesSelector = {
+  rulesSelector_title_label: 'Rules',
+  rulesSelector_close_button: 'Close',
+  rulesSelector_doubleDeath_label: 'DoubleDeath',
+  rulesSelector_pointsToWin_label: 'Min points to win',
+  rulesSelector_pointsForVictory_label: 'Points for victory',
+}
+
 export const english = {
   locale: 'en',
   ...error,
@@ -71,4 +79,5 @@ export const english = {
   ...contendersSelector,
   ...game,
   ...results,
+  ...rulesSelector,
 }
