@@ -54,9 +54,11 @@ ReactDOM.render((
   <React.StrictMode>
     <Provider value={overmind}>
       <MuiThemeProvider theme={theme}>
-        <Router history={history}>
-          <Route component={App} />
-        </Router>
+        <CssBaseline>
+          <Router history={history}>
+            <Route component={App} />
+          </Router>
+        </CssBaseline>
       </MuiThemeProvider>
     </Provider>
   </React.StrictMode>
