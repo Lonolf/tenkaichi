@@ -50,6 +50,7 @@ const toPrice = price => {
 const contendersSelector = {
   contendersSelector_title: 'Contendenti',
   contendersSelector_name_label: 'Nome del contendente',
+  rulesSelector_title: 'Selezione regolamento',
 }
 
 const game = {
@@ -63,6 +64,14 @@ const results = {
   gamesResults_title: 'Games',
 }
 
+const rulesSelector = {
+  rulesSelector_title_label: 'Regolamento',
+  rulesSelector_close_button: 'Chiudi',
+  rulesSelector_doubleDeath_label: 'Doppia morte',
+  rulesSelector_pointsToWin_label: 'Punteggio minimo',
+  rulesSelector_pointsForVictory_label: 'Punteggio per ogni vittoria',
+}
+
 export const italian = {
   locale: 'it',
   ...error,
@@ -72,4 +81,5 @@ export const italian = {
   ...contendersSelector,
   ...game,
   ...results,
+  ...rulesSelector,
 }

@@ -64,8 +64,9 @@ const ContendersSelector = () => {
 
   return (
     <>
-      <Typography variant='h4'>{translator.fromLabel('contendersSelector_title')}</Typography>
       <div style={{ height: 30 }} />
+      <Typography variant='h4'>{translator.fromLabel('contendersSelector_title')}</Typography>
+      <div style={{ height: 15 }} />
       <List>
         <Divider />
         {contenders.map((contender, index) => (

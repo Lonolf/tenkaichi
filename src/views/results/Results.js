@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useState, useActions } from 'overmind/index'
+import { useOState, useActions } from 'overmind/index'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const Results = () => {
-  const state = useState()
+  const state = useOState()
   const classes = useStyles()
   const actions = useActions()
 
@@ -51,6 +51,7 @@ const Results = () => {
           })}
       </List>
       <GameResults />
+      <div style={{ height: 50 }} />
       <Fab
         className={classes.fab}
         color='primary'

@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles'
 
 import { Route } from 'react-router-dom'
 import ContendersSelector from 'views/contendersSelector/ContendersSelector'
+import RulesSelector from 'views/rulesSelector/RulesSelector'
 import Game from 'views/game/Game'
 import Results from 'views/results/Results'
 
@@ -35,11 +36,11 @@ const useStyles = makeStyles(theme => ({
   },
   secondContainer: {
     padding: '2%',
+    paddingTop: 50,
     display: 'flex',
-    justifyContent: 'center',
+    flexDirection: 'column',
     alignItems: 'center',
     height: '100%',
-    flexDirection: 'column',
   },
   siderbarMain: {
     flex: 3,
@@ -62,6 +63,7 @@ const ContentManager = () => {
   return (
     <div className={classes.mainContainer}>
       <div className={`${classes.secondContainer} ${classes.scrollbars}`}>
+        <Route exact path='/'><RulesSelector /></Route>
         <Route exact path='/'><ContendersSelector /></Route>
         <Route path='/game/:gameId?'><Game /></Route>
         <Route path='/results'><Results /></Route>

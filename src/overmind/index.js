@@ -12,7 +12,7 @@ export const config = {
   actions,
 }
 
-export const useState = createStateHook()
+export const useOState = createStateHook()
 export const useActions = createActionsHook()
 export const useEffects = createEffectsHook()
 export const useReaction = createReactionHook()

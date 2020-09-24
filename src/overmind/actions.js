@@ -2,6 +2,7 @@ import { history } from 'index'
 
 import contenders from './actions/contenders'
 import games from './actions/games'
+import settings from './actions/settings'
 
 const changeLogin = ({ state, effects, actions }) => {
   startLoading({ state, value: 'changeLogin' })
@@ -32,6 +33,7 @@ const reset = ({ state }) => {
 export default {
   ...contenders,
   ...games,
+  ...settings,
   changeLogin,
   reset,
 }

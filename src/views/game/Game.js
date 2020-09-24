@@ -1,6 +1,6 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { useState, useActions } from 'overmind/index'
+import { useOState, useActions } from 'overmind/index'
 
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
@@ -30,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 
 const Game = () => {
   const classes = useStyles()
-  const state = useState()
+  const state = useOState()
   const { gameId } = useParams()
   const actions = useActions()
 
