@@ -10,8 +10,8 @@ import Refresh from '@material-ui/icons/Refresh'
 
 import translator from 'utility/translator'
 
-import GameResults from './components/GameResults'
-import ContendersList from './components/ContendersList'
+import GameResults from './components/GameResults.jsx'
+import ContendersList from './components/ContendersList.jsx'
 
 const useStyles = makeStyles(theme => ({
   fab: {

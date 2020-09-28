@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button'
 
 import Menu from '@material-ui/icons/Menu'
 
-import Modal from 'components/modal/Modal'
+import Modal from 'components/modal/Modal.jsx'
 
 import translator from 'utility/translator'
 

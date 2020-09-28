@@ -26,11 +26,9 @@ const ScoreCard = ({ props, props: { contenders, game: { conA, conB } = {} } = {
 
   return (
     <div className={classes.scoreContainer}>
-      <Divider />
       <ScoreLine props={{ ...props, scoreName: 'scoreConA', adversaryScoreName: 'scoreConB', contender: contenders[conA] }} />
-      <Divider />
+      <div style={{ height: 25 }} />
       <ScoreLine props={{ ...props, scoreName: 'scoreConB', adversaryScoreName: 'scoreConA', contender: contenders[conB] }} />
-      <Divider />
     </div>
   )
 }
@@ -43,32 +41,36 @@ const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adve
   const score = match[scoreName]
 
   return (
-    <Toolbar className={classes.scoreLineContainer} disableGutters>
-      <Button
-        variant='outlined'
-        onClick={() => actions.gamesEditMatch({ gameId, matchId, [scoreName]: score - 1 })}
-        disabled={score < 1 || match.finished}
-      >
-        <Remove />
-      </Button>
-      {contender.name + ' - score: ' + score}
-      <Button
-        variant='contained'
-        color='primary'
-        className={classes.button}
-        startIcon={<ThumbDown />}
-        onClick={() => actions.gameAddAdmonition({ gameId, matchId, name: contender.name, adversaryScoreName })}
-      >
-        {contender.admonitions}
-      </Button>
-      <Button
-        variant='outlined'
-        onClick={() => actions.gamesEditMatch({ gameId, matchId, [scoreName]: score + 1 })}
-        disabled={match.finished}
-      >
-        <Add />
-      </Button>
-    </Toolbar>
+    <>
+      <Divider />
+      <Toolbar className={classes.scoreLineContainer} disableGutters>
+        <Button
+          variant='outlined'
+          onClick={() => actions.gamesEditMatch({ gameId, matchId, [scoreName]: score - 1 })}
+          disabled={score < 1 || match.finished}
+        >
+          <Remove />
+        </Button>
+        {contender.name + ' - score: ' + score}
+        <Button
+          variant='contained'
+          color='primary'
+          className={classes.button}
+          startIcon={<ThumbDown />}
+          onClick={() => actions.gameAddAdmonition({ gameId, matchId, name: contender.name, adversaryScoreName })}
+        >
+          {contender.admonitions}
+        </Button>
+        <Button
+          variant='outlined'
+          onClick={() => actions.gamesEditMatch({ gameId, matchId, [scoreName]: score + 1 })}
+          disabled={match.finished}
+        >
+          <Add />
+        </Button>
+      </Toolbar>
+      <Divider />
+    </>
   )
 }
 

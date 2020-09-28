@@ -11,7 +11,7 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 
-import ContenderDetails from 'components/contenderDetails/ContenderDetails'
+import ContenderDetails from 'components/contenderDetails/ContenderDetails.jsx'
 
 const useStyles = makeStyles(theme => ({
 }))

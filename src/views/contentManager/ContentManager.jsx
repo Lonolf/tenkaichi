@@ -4,10 +4,10 @@ import { useOState } from 'overmind/index'
 
 import { makeStyles } from '@material-ui/core/styles'
 
-import ContendersSelector from 'views/contendersSelector/ContendersSelector'
-import RulesSelector from 'views/rulesSelector/RulesSelector'
+import ContendersSelector from 'views/contendersSelector/ContendersSelector.jsx'
+import RulesSelector from 'views/rulesSelector/RulesSelector.jsx'
 import Game from 'views/game/Game.jsx'
-import Results from 'views/results/Results'
+import Results from 'views/results/Results.jsx'
 
 import { useUpdateParams } from 'hooks'
 

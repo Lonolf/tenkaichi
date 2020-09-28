@@ -7,8 +7,8 @@ import Fab from '@material-ui/core/Fab'
 
 import Check from '@material-ui/icons/Check'
 
-import ScoreCard from './components/ScoreCard'
-import TopBar from './components/TopBar'
+import ScoreCard from './components/ScoreCard.jsx'
+import TopBar from './components/TopBar.jsx'
 
 import translator from 'utility/translator'
 

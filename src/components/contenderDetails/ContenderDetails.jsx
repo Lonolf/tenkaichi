@@ -4,7 +4,7 @@ import { useOState } from 'overmind/index'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
-import Modal from 'components/modal/Modal'
+import Modal from 'components/modal/Modal.jsx'
 
 import translator from 'utility/translator'
 

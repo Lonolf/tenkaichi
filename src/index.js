@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { createOvermind } from 'overmind'
 import { Provider } from 'overmind-react'
 import { config } from './overmind'
-import App from './App'
+import App from './App.jsx'
 import * as serviceWorker from './serviceWorker'
 
 import { Router, Route } from 'react-router-dom'
