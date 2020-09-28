@@ -1,5 +1,3 @@
-import { history } from 'index'
-
 import contenders from './actions/contenders'
 import games from './actions/games'
 import navigation from './actions/navigation'
@@ -28,7 +26,12 @@ const reset = ({ state }) => {
   state.games = {}
   state.contenders = {}
 
-  history.push('/')
+  state.navigation = {
+    view: 'contendersSelector',
+    gameId: null,
+    matchId: null,
+  }
+  state.log = []
 }
 
 export default {

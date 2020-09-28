@@ -19,6 +19,7 @@ const state = {
   contenders: {},
   games: {},
   results: derived(results),
+  log: [],
 }
 
 export default state
