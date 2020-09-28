@@ -65,7 +65,7 @@ const gamesFinishGame = ({ state, actions }, { gameId }) => {
     if (Object.values(state.games).filter(game => !game.finished).length === 0)
       actions.navigationChangeNavigation({ view: 'results' })
     else if (state.games[gameId + 1] != null)
-      actions.navigationChangeNavigation({ gameId: gameId + 1 })
+      actions.navigationChangeNavigation({ gameId: gameId + 1, matchId: 1 })
   } catch (error) {
     console.error(error)
   }
