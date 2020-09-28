@@ -68,8 +68,22 @@ const rulesSelector = {
   rulesSelector_title_label: 'Regolamento',
   rulesSelector_close_button: 'Chiudi',
   rulesSelector_doubleDeath_label: 'Doppia morte',
-  rulesSelector_pointsToWin_label: 'Punteggio minimo',
-  rulesSelector_pointsForVictory_label: 'Punteggio per ogni vittoria',
+  rulesSelector_pointsToWin_label: 'Punteggio minimo: ',
+  rulesSelector_pointsForVictory_label: 'Punteggio per ogni vittoria: ',
+  rulesSelector_matches_label: 'Match per partita: ',
+  rulesSelector_maxAdmonitions_label: 'Ammonizione massime: ',
+}
+
+const contenderDetails = {
+  contenderDetails_name_label: 'Nome: ',
+  contenderDetails_points_label: 'Punti totale: ',
+  contenderDetails_disparity_label: 'Disparità: ',
+  contenderDetails_hitsScored_label: 'Colpi fatti: ',
+  contenderDetails_hitsSuffered_label: 'Colpi subiti: ',
+  contenderDetails_gamesWin_label: 'Partite vinte: ',
+  contenderDetails_gamesLost_label: 'Partite perse: ',
+  contenderDetails_matchesWin_label: 'Match vinti: ',
+  contenderDetails_matchesLost_label: 'Match persi: ',
 }
 
 export const italian = {
@@ -82,4 +96,5 @@ export const italian = {
   ...game,
   ...results,
   ...rulesSelector,
+  ...contenderDetails,
 }

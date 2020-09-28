@@ -25,6 +25,10 @@ const GamesResults = () => {
   const classes = useStyles()
   const state = useOState()
 
+  const displayMatchesResult = ({ game }) =>
+    Object.values(game.matches).map(match => match.scoreConA + '-' + match.scoreConB)
+      .join(', ')
+
   return (
     <div className={classes.root}>
       <Accordion>
@@ -44,10 +48,8 @@ const GamesResults = () => {
                 <React.Fragment key={game.gameId}>
                   <ListItem>
                     <Toolbar disableGutters style={{ justifyContent: 'space-between', width: '100%' }}>
-                      <Typography>{`Game: ${game.gameId}`}</Typography>
-                      <Typography>{`${game.conA}: ${game.scoreConA}`}</Typography>
-                      <Typography>{' - '}</Typography>
-                      <Typography>{`${game.conB}: ${game.scoreConB}`}</Typography>
+                      <Typography>{`Game ${game.gameId}: ${game.conA} - ${game.conB}`}</Typography>
+                      <Typography>{displayMatchesResult({ game })}</Typography>
                     </Toolbar>
                   </ListItem>
                   <Divider />

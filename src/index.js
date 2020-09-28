@@ -12,10 +12,17 @@ import { createBrowserHistory } from 'history'
 import { MuiThemeProvider, unstable_createMuiStrictModeTheme as createMuiTheme } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
-const overmind = createOvermind(config)
+const overmind = createOvermind(config, { hotReloading: true })
 export const history = createBrowserHistory()
 
 const theme = createMuiTheme({
+  overrides: {
+    MuiTableCell: {
+      root: {
+        padding: 5,
+      },
+    },
+  },
   typography: {
     fontFamily: 'arial',
   },

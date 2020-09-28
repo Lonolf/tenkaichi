@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 
+import { useOState } from 'overmind/index'
+
 import { makeStyles } from '@material-ui/core/styles'
 
-import { Route } from 'react-router-dom'
 import ContendersSelector from 'views/contendersSelector/ContendersSelector'
 import RulesSelector from 'views/rulesSelector/RulesSelector'
-import Game from 'views/game/Game'
+import Game from 'views/game/Game.jsx'
 import Results from 'views/results/Results'
 
 import { useUpdateParams } from 'hooks'
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.background.contrastText,
   },
   secondContainer: {
-    padding: '2%',
+    padding: '5%',
     paddingTop: 50,
     display: 'flex',
     flexDirection: 'column',
@@ -54,6 +55,8 @@ const useStyles = makeStyles(theme => ({
 const ContentManager = () => {
   const classes = useStyles()
   const updateParams = useUpdateParams()
+  const state = useOState()
+  const view = state.navigation.view
 
   useEffect(() => {
     updateParams({ pathname: '/' })
@@ -63,10 +66,16 @@ const ContentManager = () => {
   return (
     <div className={classes.mainContainer}>
       <div className={`${classes.secondContainer} ${classes.scrollbars}`}>
-        <Route exact path='/'><RulesSelector /></Route>
-        <Route exact path='/'><ContendersSelector /></Route>
-        <Route path='/game/:gameId?'><Game /></Route>
-        <Route path='/results'><Results /></Route>
+        {view === 'contendersSelector'
+          ? (
+            <>
+              <RulesSelector />
+              <ContendersSelector />
+            </>
+          ) : view === 'game' ? <Game />
+            : view === 'results' ? <Results />
+              : null
+        }
       </div>
     </div>
   )

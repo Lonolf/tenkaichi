@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme) => ({
   rulesContainer: {
     padding: 25,
     height: '100%',
+    width: '100%',
     display: 'flex',
     flexDirection: 'column',
   },
@@ -76,8 +77,22 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
           label={translator.fromLabel('rulesSelector_doubleDeath_label')}
         />
         <div style={{ flex: '0 0 25px' }} />
+        <Typography id='matches' gutterBottom>
+          {translator.fromLabel('rulesSelector_matches_label') + state.settings.rules.matches}
+        </Typography>
+        <Slider
+          value={state.settings.rules.matches}
+          aria-labelledby='matches'
+          valueLabelDisplay='auto'
+          marks
+          min={1}
+          max={7}
+          step={2}
+          onChange={(event, value) => handleChange({ matches: value })}
+        />
+        <div style={{ flex: '0 0 25px' }} />
         <Typography id='pointsToWin' gutterBottom>
-          {translator.fromLabel('rulesSelector_pointsToWin_label') + ': ' + state.settings.rules.pointsToWin}
+          {translator.fromLabel('rulesSelector_pointsToWin_label') + state.settings.rules.pointsToWin}
         </Typography>
         <Slider
           value={state.settings.rules.pointsToWin}
@@ -90,7 +105,7 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
         />
         <div style={{ flex: '0 0 25px' }} />
         <Typography id='pointsToWin' gutterBottom>
-          {translator.fromLabel('rulesSelector_pointsForVictory_label') + ': ' + state.settings.rules.pointsForVictory}
+          {translator.fromLabel('rulesSelector_pointsForVictory_label') + state.settings.rules.pointsForVictory}
         </Typography>
         <Slider
           value={state.settings.rules.pointsForVictory}
@@ -100,6 +115,18 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
           min={1}
           max={5}
           onChange={(event, value) => handleChange({ pointsForVictory: value })}
+        />
+        <div style={{ flex: '0 0 25px' }} />
+        <Typography id='pointsToWin' gutterBottom>
+          {translator.fromLabel('rulesSelector_maxAdmonitions_label') + state.settings.rules.maxAdmonitions}
+        </Typography>
+        <Slider
+          value={state.settings.rules.maxAdmonitions}
+          aria-labelledby='maxAdmonitions'
+          valueLabelDisplay='auto'
+          min={0}
+          max={10}
+          onChange={(event, value) => handleChange({ maxAdmonitions: value })}
         />
         <div style={{ flex: '1 1 10px' }} />
         <Button

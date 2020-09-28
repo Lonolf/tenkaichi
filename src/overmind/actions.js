@@ -2,6 +2,7 @@ import { history } from 'index'
 
 import contenders from './actions/contenders'
 import games from './actions/games'
+import navigation from './actions/navigation'
 import settings from './actions/settings'
 
 const changeLogin = ({ state, effects, actions }) => {
@@ -33,6 +34,7 @@ const reset = ({ state }) => {
 export default {
   ...contenders,
   ...games,
+  ...navigation,
   ...settings,
   changeLogin,
   reset,

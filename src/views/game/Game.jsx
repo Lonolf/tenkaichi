@@ -2,17 +2,13 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useOState, useActions } from 'overmind/index'
 
-import Toolbar from '@material-ui/core/Toolbar'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
 import Fab from '@material-ui/core/Fab'
 
 import Check from '@material-ui/icons/Check'
 
-import { useUpdateParams } from 'hooks'
-import { useParams } from 'react-router-dom'
-
 import ScoreCard from './components/ScoreCard'
+import TopBar from './components/TopBar'
 
 import translator from 'utility/translator'
 
@@ -20,6 +16,7 @@ const useStyles = makeStyles(theme => ({
   topBarContainer: {
     width: '100%',
     justifyContent: 'space-between',
+    textAlign: 'center',
   },
   fab: {
     position: 'fixed',
@@ -31,18 +28,20 @@ const useStyles = makeStyles(theme => ({
 const Game = () => {
   const classes = useStyles()
   const state = useOState()
-  const { gameId } = useParams()
   const actions = useActions()
+  const gameId = Number(state.navigation.gameId)
+  const matchId = Number(state.navigation.matchId)
 
-  if (state.games[gameId] == null)
+  if (state.games[gameId] == null || state.games[gameId].matches[matchId] == null)
     return null
 
   const game = state.games[gameId]
+  const match = game.matches[matchId]
 
   return (
     <>
-      <TopBar props={{ games: state.games, gameId }} />
-      <ScoreCard props={{ state, gameId }} />
+      <TopBar />
+      <ScoreCard props={{ contenders: state.contenders, gameId, matchId, game, match }} />
       <div style={{ height: 30 }} />
       {state.games[+gameId + 1] != null
         ? <Typography>{'Next game: ' + state.games[+gameId + 1].conA + ' vs ' + state.games[+gameId + 1].conB}</Typography>
@@ -53,40 +52,12 @@ const Game = () => {
       <Fab
         className={classes.fab}
         color='primary'
-        onClick={() => actions.gamesFinishGame({ gameId })}
-        disabled={game.finished || (game.scoreConA === 0 && game.scoreConB === 0)}
+        onClick={() => actions.gamesFinishMatch({ gameId, matchId })}
+        disabled={match.finished}
       >
         <Check />
       </Fab>
     </>
-  )
-}
-
-const TopBar = ({ props: { games, gameId } = {} } = {}) => {
-  const updateParams = useUpdateParams()
-  const classes = useStyles()
-
-  return (
-    <Toolbar className={classes.topBarContainer} disableGutters>
-      <Button
-        variant='outlined'
-        disabled={Number(gameId) < 2}
-        onClick={() => updateParams({ pathname: `/game/${Number(gameId) - 1}` })}
-      >
-        BACK
-      </Button>
-      <Typography variant='h4'>
-        {translator.fromLabel('game_title')}
-        {' ' + gameId}
-      </Typography>
-      <Button
-        variant='outlined'
-        disabled={Number(gameId) >= Object.keys(games).length}
-        onClick={() => updateParams({ pathname: `/game/${Number(gameId) + 1}` })}
-      >
-        FORWARD
-      </Button>
-    </Toolbar>
   )
 }
 
