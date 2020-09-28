@@ -12,7 +12,7 @@ import ThumbDown from '@material-ui/icons/ThumbDown'
 
 const useStyles = makeStyles(theme => ({
   scoreContainer: {
-    paddingTop: 30,
+    paddingTop: 75,
     width: '100%',
   },
   scoreLineContainer: {
