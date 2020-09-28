@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { useActions } from 'overmind/index'
+import { useActions, useOState } from 'overmind/index'
 
 import Fab from '@material-ui/core/Fab'
 import List from '@material-ui/core/List'
@@ -9,6 +9,7 @@ import ListItem from '@material-ui/core/ListItem'
 import Divider from '@material-ui/core/Divider'
 import TextField from '@material-ui/core/TextField'
 import Typography from '@material-ui/core/Typography'
+import Autocomplete from '@material-ui/lab/Autocomplete'
 
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 
@@ -27,11 +28,16 @@ const ContendersSelector = () => {
   const [contenders, setContenders] = useState([{ name: '' }])
   const [errors, setErrors] = useState({})
   const actions = useActions()
+  const state = useOState()
 
   useEffect(() => {
     checkErrors()
   // eslint-disable-next-line
   }, [contenders])
+
+  const filterOptions = () =>
+    Object.values(state.users)
+      .filter(option => !contenders.some(contender => contender.name === option.name))
 
   const createContender = ({ index }) => {
     if (contenders.length - 1 === index)
@@ -39,13 +45,14 @@ const ContendersSelector = () => {
   }
 
   const changeName = ({ name, index }) => {
+    console.log(name)
     const newContenders = [...contenders]
     newContenders[index] = { ...contenders[index], name }
     setContenders(newContenders)
   }
 
-  const deleteContender = ({ index }) => {
-    if (contenders[index].name === '' && index === contenders.length - 2) {
+  const deleteContender = ({ index, force = false }) => {
+    if (force || (contenders[index].name === '' && index === contenders.length - 2)) {
       const newContenders = [...contenders]
       newContenders.splice(newContenders.indexOf(index), 1)
       setContenders(newContenders)
@@ -72,14 +79,32 @@ const ContendersSelector = () => {
         {contenders.map((contender, index) => (
           <React.Fragment key={index}>
             <ListItem>
-              <TextField
-                placeholder={translator.fromLabel('contendersSelector_name_label')}
-                onChange={event => changeName({ name: event.target.value, index })}
-                value={contender.name}
-                onFocus={() => createContender({ index })}
-                onBlur={() => deleteContender({ index })}
-                error={errors[index] != null}
-                helperText={errors[index] || ''}
+              <Autocomplete
+                id='contenderSelector'
+                options={filterOptions()}
+                getOptionLabel={option => option.name || option}
+                style={{ width: 300 }}
+                freeSolo
+                autoSelect
+                onChange={(event, option) => {
+                  if (option == null)
+                    deleteContender({ index, force: true })
+                  else
+                    changeName({ name: option.name || option, index })
+                }}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label='contenderSelector'
+                    variant='filled'
+                    placeholder={translator.fromLabel('contendersSelector_name_label')}
+                    value={contender.name}
+                    onFocus={() => createContender({ index })}
+                    onBlur={() => deleteContender({ index })}
+                    error={errors[index] != null}
+                    helperText={errors[index] || ''}
+                  />
+                )}
               />
             </ListItem>
             <Divider />

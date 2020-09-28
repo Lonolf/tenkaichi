@@ -13,6 +13,8 @@ import Paper from '@material-ui/core/Paper'
 
 import ContenderDetails from 'components/contenderDetails/ContenderDetails.jsx'
 
+import translator from 'utility/translator'
+
 const useStyles = makeStyles(theme => ({
 }))
 
@@ -76,11 +78,21 @@ const ContendersList = () => {
         <Table className={classes.table} aria-label='simple table'>
           <TableHead>
             <TableRow>
-              <TableCell onClick={() => setOrder(order !== 'name' ? 'name' : 'invName')}>Name</TableCell>
-              <TableCell onClick={() => setOrder(order !== 'points' ? 'points' : 'invPoints')} align='right'>Points</TableCell>
-              <TableCell onClick={() => setOrder(order !== 'disparity' ? 'disparity' : 'invDisparity')} align='right'>Disparity</TableCell>
-              <TableCell onClick={() => setOrder(order !== 'hitsScored' ? 'hitsScored' : 'invHitsScored')} align='right'>Hits Scored</TableCell>
-              <TableCell onClick={() => setOrder(order !== 'hitsSuffered' ? 'hitsSuffered' : 'invHitsSuffered')} align='right'>Hits Suffered</TableCell>
+              <TableCell onClick={() => setOrder(order !== 'name' ? 'name' : 'invName')}>
+                {translator.fromLabel('contendersList_name_label')}
+              </TableCell>
+              <TableCell onClick={() => setOrder(order !== 'points' ? 'points' : 'invPoints')} align='right'>
+                {translator.fromLabel('contendersList_points_label')}
+              </TableCell>
+              <TableCell onClick={() => setOrder(order !== 'disparity' ? 'disparity' : 'invDisparity')} align='right'>
+                {translator.fromLabel('contendersList_disparity_label')}
+              </TableCell>
+              <TableCell onClick={() => setOrder(order !== 'hitsScored' ? 'hitsScored' : 'invHitsScored')} align='right'>
+                {translator.fromLabel('contendersList_hitsScored_label')}
+              </TableCell>
+              <TableCell onClick={() => setOrder(order !== 'hitsSuffered' ? 'hitsSuffered' : 'invHitsSuffered')} align='right'>
+                {translator.fromLabel('contendersList_hitsSuffered_label')}
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

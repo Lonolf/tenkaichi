@@ -50,13 +50,12 @@ const toPrice = price => {
 const contendersSelector = {
   contendersSelector_title: 'Contendenti',
   contendersSelector_name_label: 'Nome del contendente',
-  rulesSelector_title: 'Selezione regolamento',
 }
 
 const game = {
-  game_title: 'Game',
-  game_gameFinished_warning: 'Game terminato',
-  game_lastGame_warning: 'Ultimo game',
+  game_title: 'Partita',
+  game_gameFinished_warning: 'Partita terminata',
+  game_lastGame_warning: 'Ultima partita',
 }
 
 const results = {
@@ -74,6 +73,14 @@ const rulesSelector = {
   rulesSelector_maxAdmonitions_label: 'Ammonizione massime: ',
 }
 
+const contendersList = {
+  contendersList_name_label: 'Nome',
+  contendersList_points_label: 'Punti',
+  contendersList_disparity_label: 'Disparità',
+  contendersList_hitsScored_label: 'Fatti',
+  contendersList_hitsSuffered_label: 'Subiti',
+}
+
 const contenderDetails = {
   contenderDetails_name_label: 'Nome: ',
   contenderDetails_points_label: 'Punti totale: ',
@@ -86,6 +93,10 @@ const contenderDetails = {
   contenderDetails_matchesLost_label: 'Match persi: ',
 }
 
+const scoreCard = {
+  scoreline_score_label: 'Punteggio: ',
+}
+
 export const italian = {
   locale: 'it',
   ...error,
@@ -96,5 +107,7 @@ export const italian = {
   ...game,
   ...results,
   ...rulesSelector,
+  ...contendersList,
   ...contenderDetails,
+  ...scoreCard,
 }

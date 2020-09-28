@@ -19,6 +19,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
+  item: {
+    padding: 0,
+  },
 }))
 
 const GamesResults = () => {
@@ -46,9 +49,10 @@ const GamesResults = () => {
               .sort((a, b) => a.gameId > b.gameId ? 1 : -1)
               .map(game => (
                 <React.Fragment key={game.gameId}>
-                  <ListItem>
+                  <ListItem className={classes.item}>
                     <Toolbar disableGutters style={{ justifyContent: 'space-between', width: '100%' }}>
-                      <Typography>{`Game ${game.gameId}: ${game.conA} - ${game.conB}`}</Typography>
+                      <div><Typography>{game.gameId}</Typography></div>
+                      <div><Typography>{`${game.conA} - ${game.conB}`}</Typography></div>
                       <Typography>{displayMatchesResult({ game })}</Typography>
                     </Toolbar>
                   </ListItem>

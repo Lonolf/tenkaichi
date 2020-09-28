@@ -48,26 +48,53 @@ const toPrice = price => {
 }
 
 const contendersSelector = {
-  contendersSelector_title: 'Contendenti',
-  contendersSelector_name_label: 'Nome del contendente',
+  contendersSelector_title: 'Contenders',
+  contendersSelector_name_label: 'Name of contender',
 }
 
 const game = {
   game_title: 'Game',
-  game_gameFinished_warning: 'Game terminato',
+  game_gameFinished_warning: 'Finished game',
+  game_lastGame_warning: 'Last game',
 }
 
 const results = {
-  results_title: 'Risultati',
-  gamesResults_title: 'Round',
+  results_title: 'Results',
+  gamesResults_title: 'Games',
 }
 
 const rulesSelector = {
   rulesSelector_title_label: 'Rules',
   rulesSelector_close_button: 'Close',
-  rulesSelector_doubleDeath_label: 'DoubleDeath',
-  rulesSelector_pointsToWin_label: 'Min points to win',
-  rulesSelector_pointsForVictory_label: 'Points for victory',
+  rulesSelector_doubleDeath_label: 'Double death',
+  rulesSelector_pointsToWin_label: 'Minimal score: ',
+  rulesSelector_pointsForVictory_label: 'Points for victory: ',
+  rulesSelector_matches_label: 'Matches per game: ',
+  rulesSelector_maxAdmonitions_label: 'Max admonitions: ',
+}
+
+const contendersList = {
+  contendersList_name_label: 'Name',
+  contendersList_points_label: 'Points',
+  contendersList_disparity_label: 'Disparity',
+  contendersList_hitsScored_label: 'Score',
+  contendersList_hitsSuffered_label: 'Suffered',
+}
+
+const contenderDetails = {
+  contenderDetails_name_label: 'Name: ',
+  contenderDetails_points_label: 'Total points: ',
+  contenderDetails_disparity_label: 'Disparity: ',
+  contenderDetails_hitsScored_label: 'Hits scored: ',
+  contenderDetails_hitsSuffered_label: 'Hits suffered: ',
+  contenderDetails_gamesWin_label: 'Games win: ',
+  contenderDetails_gamesLost_label: 'Games lost: ',
+  contenderDetails_matchesWin_label: 'Matches win: ',
+  contenderDetails_matchesLost_label: 'Matches lost: ',
+}
+
+const scoreCard = {
+  scoreline_score_label: 'Score: ',
 }
 
 export const english = {
@@ -80,4 +107,7 @@ export const english = {
   ...game,
   ...results,
   ...rulesSelector,
+  ...contendersList,
+  ...contenderDetails,
+  ...scoreCard,
 }

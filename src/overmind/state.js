@@ -2,6 +2,7 @@ import { derived } from 'overmind'
 import results from './state/results'
 
 const state = {
+  users: {},
   navigation: {
     view: 'contendersSelector',
     gameId: null,

@@ -9,6 +9,9 @@ import Divider from '@material-ui/core/Divider'
 import Add from '@material-ui/icons/Add'
 import Remove from '@material-ui/icons/Remove'
 import ThumbDown from '@material-ui/icons/ThumbDown'
+import { Typography } from '@material-ui/core'
+
+import translator from 'utility/translator'
 
 const useStyles = makeStyles(theme => ({
   scoreContainer: {
@@ -18,6 +21,12 @@ const useStyles = makeStyles(theme => ({
   scoreLineContainer: {
     width: '100%',
     justifyContent: 'space-between',
+  },
+  nameContainer: {
+    flex: '1 0 25px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 }))
 
@@ -51,9 +60,12 @@ const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adve
         >
           <Remove />
         </Button>
-        {contender.name + ' - score: ' + score}
+        <div className={classes.nameContainer}>
+          <div><Typography>{contender.name}</Typography></div>
+          <div><Typography>{translator.fromLabel('scoreline_score_label') + score}</Typography></div>
+        </div>
         <Button
-          variant='contained'
+          variant='outlined'
           color='primary'
           className={classes.button}
           startIcon={<ThumbDown />}
@@ -61,6 +73,7 @@ const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adve
         >
           {contender.admonitions}
         </Button>
+        <div style={{ width: 5 }} />
         <Button
           variant='outlined'
           onClick={() => actions.gamesEditMatch({ gameId, matchId, [scoreName]: score + 1 })}
