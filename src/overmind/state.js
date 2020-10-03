@@ -2,25 +2,25 @@ import { derived } from 'overmind'
 import results from './state/results'
 
 const state = {
-  users: {},
+  contenders: {},
+  games: {},
+  log: [],
   navigation: {
     view: 'contendersSelector',
     gameId: null,
     matchId: null,
   },
-  settings: {
-    rules: {
-      doubleDeath: true,
-      pointsToWin: 5,
-      pointsForVictory: 1,
-      matches: 3,
-      maxAdmonitions: 1,
-    },
+  rules: {
+    doubleDeath: true,
+    pointsToWin: 5,
+    pointsForVictory: 1,
+    matches: 3,
+    maxAdmonitions: 1,
   },
-  contenders: {},
-  games: {},
+  tournament: {
+  },
   results: derived(results),
-  log: [],
+  users: {},
 }
 
 export default state

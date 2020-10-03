@@ -45,7 +45,6 @@ const ContendersSelector = () => {
   }
 
   const changeName = ({ name, index }) => {
-    console.log(name)
     const newContenders = [...contenders]
     newContenders[index] = { ...contenders[index], name }
     setContenders(newContenders)
@@ -95,9 +94,8 @@ const ContendersSelector = () => {
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    label='contenderSelector'
+                    label={translator.fromLabel('contendersSelector_name_label')}
                     variant='filled'
-                    placeholder={translator.fromLabel('contendersSelector_name_label')}
                     value={contender.name}
                     onFocus={() => createContender({ index })}
                     onBlur={() => deleteContender({ index })}
@@ -114,7 +112,7 @@ const ContendersSelector = () => {
       <Fab
         className={classes.fab}
         color='primary'
-        onClick={() => actions.contendersCreateContenders({ contenders })}
+        onClick={() => actions.tournamentCreateTournament({ contenders })}
         disabled={Object.values(errors).filter(error => error != null).length > 0 ||
           contenders.filter(({ name }) => name !== '').length < 2}
       >

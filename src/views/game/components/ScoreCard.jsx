@@ -69,7 +69,7 @@ const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adve
           color='primary'
           className={classes.button}
           startIcon={<ThumbDown />}
-          onClick={() => actions.gameAddAdmonition({ gameId, matchId, name: contender.name, adversaryScoreName })}
+          onClick={() => actions.gamesAddAdmonition({ gameId, matchId, name: contender.name, adversaryScoreName })}
         >
           {contender.admonitions}
         </Button>

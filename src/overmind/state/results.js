@@ -3,7 +3,7 @@ import { calcPoints, calcDisparities } from 'overmind/functions/gamesResults'
 const results = ({
   games = {},
   contenders = {},
-  settings: { rules },
+  rules,
 }) =>
   Object.values(games).reduce((results, game) =>
     calcPoints({

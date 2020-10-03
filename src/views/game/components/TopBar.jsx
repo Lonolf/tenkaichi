@@ -59,7 +59,7 @@ const TopBar = () => {
       </Button>
       <Typography variant='h6'>
         {translator.fromLabel('game_title')}
-        {' ' + gameId + ' ' + matchId + '/' + state.settings.rules.matches }
+        {' ' + gameId + ' ' + matchId + '/' + state.rules.matches }
       </Typography>
       <Button
         size='small'

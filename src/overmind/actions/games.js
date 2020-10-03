@@ -3,28 +3,27 @@ import { getContendersPairs, checkOrder } from 'overmind/functions/gamesUtilitie
 
 const formatMatch = matchId => ({ matchId, scoreConA: 0, scoreConB: 0, finished: false })
 
-const gamesCreateGames = ({ state, actions }, { filteredContenders }) => {
-  const contenders = filteredContenders.map(contender => contender.name)
+const gamesCreateGames = ({ state, actions }) => {
+  try {
+    //   const contenders = ['a', 'b', 'c', 'd', 'e', 'f']
+    const contenders = Object.keys(state.contenders)
 
-  //   const contenders = ['a', 'b', 'c', 'd', 'e', 'f']
-  const contendersPairs = checkOrder((getContendersPairs(contenders)))
+    const contendersPairs = checkOrder((getContendersPairs(contenders)))
 
-  state.games = contendersPairs.reduce((list, pair, index) => ({
-    ...list,
-    [index + 1]: {
-      gameId: index + 1,
-      conA: pair[0],
-      conB: pair[1],
-      matches: {
-        1: formatMatch(1),
+    state.games = contendersPairs.reduce((list, pair, index) => ({
+      ...list,
+      [index + 1]: {
+        gameId: index + 1,
+        conA: pair[0],
+        conB: pair[1],
+        matches: {
+          1: formatMatch(1),
+        },
       },
-    },
-  }), {})
-  actions.navigationChangeNavigation({
-    gameId: 1,
-    matchId: 1,
-    view: 'game',
-  })
+    }), {})
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 const gamesEditGame = ({ state }, { gameId, matchId, ...values }) => {
@@ -46,8 +45,8 @@ const gamesFinishMatch = ({ state, actions }, { gameId, matchId }) => {
   try {
     state.games[gameId].matches[matchId].finished = true
 
-    if (checkGameWinner({ game: state.games[gameId], rules: state.settings.rules }) != null ||
-      matchId >= state.settings.rules.matches) {
+    if (checkGameWinner({ game: state.games[gameId], rules: state.rules }) != null ||
+      matchId >= state.rules.matches) {
       actions.gamesFinishGame({ gameId })
     } else {
       state.games[gameId].matches[matchId + 1] = formatMatch(matchId + 1)
@@ -63,7 +62,7 @@ const gamesFinishGame = ({ state, actions }, { gameId }) => {
     state.games[gameId].finished = true
 
     if (Object.values(state.games).filter(game => !game.finished).length === 0)
-      actions.navigationChangeNavigation({ view: 'results' })
+      actions.tournamentFinishTournament()
     else if (state.games[gameId + 1] != null)
       actions.navigationChangeNavigation({ gameId: gameId + 1, matchId: 1 })
   } catch (error) {
@@ -71,11 +70,15 @@ const gamesFinishGame = ({ state, actions }, { gameId }) => {
   }
 }
 
-const gameAddAdmonition = ({ state }, { gameId, matchId, name, adversaryScoreName }) => {
-  state.contenders[name].admonitions++
+const gamesAddAdmonition = ({ state }, { gameId, matchId, name, adversaryScoreName }) => {
+  try {
+    state.contenders[name].admonitions++
 
-  if (state.contenders[name].admonitions > state.settings.rules.maxAdmonitions)
-    state.games[gameId].matches[matchId][adversaryScoreName]++
+    if (state.contenders[name].admonitions > state.rules.maxAdmonitions)
+      state.games[gameId].matches[matchId][adversaryScoreName]++
+  } catch (error) {
+    console.error(error)
+  }
 }
 
 export default {
@@ -84,5 +87,5 @@ export default {
   gamesEditMatch,
   gamesFinishMatch,
   gamesFinishGame,
-  gameAddAdmonition,
+  gamesAddAdmonition,
 }

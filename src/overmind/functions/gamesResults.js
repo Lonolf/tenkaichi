@@ -47,7 +47,6 @@ const assignMatchesVictories = ({ newResults, game, aWins, bWins }) => {
 }
 
 export const checkGameWinner = ({ game, rules, rules: { matches = 1 } }) => {
-  console.log(rules)
   const { aWins, bWins } = calcMatchesVictories({ game, rules })
   const mininumToWin = Math.floor(matches / 2) + 1
 

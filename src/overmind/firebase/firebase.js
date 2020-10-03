@@ -105,20 +105,16 @@ class Firebase {
       return response.data()
   }
 
-  * addCollectionDoc({ collectionId, data, idName = 'id' }) {
-    const doc = yield this.db.collection(collectionId).doc()
+  async addCollectionDoc({ collectionId, data, idName = 'id' }) {
+    const doc = await this.db.collection(collectionId).doc()
     data[idName] = doc.id
-    yield doc.set(data)
+    await doc.set(data)
     return data
   }
 
-  * setCollectionDoc({ collectionId, docId, data }) {
-    try {
-      yield this.db.collection(collectionId).doc(docId).set(data)
-      return true
-    } catch (error) {
-      return { error }
-    }
+  async setCollectionDoc({ collectionId, docId, data }) {
+    await this.db.collection(collectionId).doc(docId).set(data)
+    return true
   }
 
   * updateCollectionDoc({ collectionId, docId, keyId, data }) {

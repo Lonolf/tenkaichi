@@ -55,7 +55,7 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
   const state = useOState()
 
   const handleChange = values =>
-    actions.settingsEditRules(values)
+    actions.rulesEditRules(values)
 
   const onClose = () => setOpen(false)
 
@@ -69,8 +69,8 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
           control={(
             <Checkbox
               color='primary'
-              checked={state.settings.rules.doubleDeath}
-              onChange={() => handleChange({ doubleDeath: !state.settings.rules.doubleDeath })}
+              checked={state.rules.doubleDeath}
+              onChange={() => handleChange({ doubleDeath: !state.rules.doubleDeath })}
               name='doubleDeath'
             />
           )}
@@ -78,10 +78,10 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
         />
         <div style={{ flex: '0 0 25px' }} />
         <Typography id='matches' gutterBottom>
-          {translator.fromLabel('rulesSelector_matches_label') + state.settings.rules.matches}
+          {translator.fromLabel('rulesSelector_matches_label') + state.rules.matches}
         </Typography>
         <Slider
-          value={state.settings.rules.matches}
+          value={state.rules.matches}
           aria-labelledby='matches'
           valueLabelDisplay='auto'
           marks
@@ -92,10 +92,10 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
         />
         <div style={{ flex: '0 0 25px' }} />
         <Typography id='pointsToWin' gutterBottom>
-          {translator.fromLabel('rulesSelector_pointsToWin_label') + state.settings.rules.pointsToWin}
+          {translator.fromLabel('rulesSelector_pointsToWin_label') + state.rules.pointsToWin}
         </Typography>
         <Slider
-          value={state.settings.rules.pointsToWin}
+          value={state.rules.pointsToWin}
           aria-labelledby='pointsToWin'
           valueLabelDisplay='auto'
           marks
@@ -105,10 +105,10 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
         />
         <div style={{ flex: '0 0 25px' }} />
         <Typography id='pointsToWin' gutterBottom>
-          {translator.fromLabel('rulesSelector_pointsForVictory_label') + state.settings.rules.pointsForVictory}
+          {translator.fromLabel('rulesSelector_pointsForVictory_label') + state.rules.pointsForVictory}
         </Typography>
         <Slider
-          value={state.settings.rules.pointsForVictory}
+          value={state.rules.pointsForVictory}
           aria-labelledby='pointsToWin'
           valueLabelDisplay='auto'
           marks
@@ -118,10 +118,10 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
         />
         <div style={{ flex: '0 0 25px' }} />
         <Typography id='pointsToWin' gutterBottom>
-          {translator.fromLabel('rulesSelector_maxAdmonitions_label') + state.settings.rules.maxAdmonitions}
+          {translator.fromLabel('rulesSelector_maxAdmonitions_label') + state.rules.maxAdmonitions}
         </Typography>
         <Slider
-          value={state.settings.rules.maxAdmonitions}
+          value={state.rules.maxAdmonitions}
           aria-labelledby='maxAdmonitions'
           valueLabelDisplay='auto'
           min={0}

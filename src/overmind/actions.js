@@ -1,7 +1,7 @@
-import contenders from './actions/contenders'
 import games from './actions/games'
 import navigation from './actions/navigation'
-import settings from './actions/settings'
+import rules from './actions/rules'
+import tournament from './actions/tournament'
 
 const onStart = async({ state, effects }) => {
   state.users = await effects.getUsers()
@@ -20,10 +20,10 @@ const reset = ({ state }) => {
 }
 
 export default {
-  ...contenders,
   ...games,
   ...navigation,
-  ...settings,
+  ...rules,
+  ...tournament,
   onStart,
   reset,
 }
