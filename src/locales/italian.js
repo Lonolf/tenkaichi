@@ -66,8 +66,9 @@ const results = {
 const rulesSelector = {
   rulesSelector_title_label: 'Regolamento',
   rulesSelector_close_button: 'Chiudi',
-  rulesSelector_doubleDeath_label: 'Doppia morte',
-  rulesSelector_pointsToWin_label: 'Punteggio minimo: ',
+  rulesSelector_doubleDeath_label: 'Abilita doppia morte',
+  rulesSelector_doubleDeath_explanation: 'Se entrambi i giocatori superano il punteggio minimo, il match non ha un vincitore',
+  rulesSelector_pointsToWin_label: 'Punteggio per vincere il match: ',
   rulesSelector_pointsForVictory_label: 'Punteggio per ogni vittoria: ',
   rulesSelector_matches_label: 'Match per partita: ',
   rulesSelector_maxAdmonitions_label: 'Ammonizione massime: ',

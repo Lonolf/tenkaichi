@@ -1,5 +1,5 @@
 import { checkGameWinner } from 'overmind/functions/gamesResults'
-import { getContendersPairs, checkOrder } from 'overmind/functions/gamesUtilities'
+import { getContendersPairs, checkOrder, shuffleArray } from 'overmind/functions/gamesUtilities'
 
 const formatMatch = matchId => ({ matchId, scoreConA: 0, scoreConB: 0, finished: false })
 
@@ -8,7 +8,7 @@ const gamesCreateGames = ({ state, actions }) => {
     //   const contenders = ['a', 'b', 'c', 'd', 'e', 'f']
     const contenders = Object.keys(state.contenders)
 
-    const contendersPairs = checkOrder((getContendersPairs(contenders)))
+    const contendersPairs = checkOrder(shuffleArray(getContendersPairs(contenders)))
 
     state.games = contendersPairs.reduce((list, pair, index) => ({
       ...list,

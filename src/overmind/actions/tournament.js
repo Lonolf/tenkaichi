@@ -15,12 +15,16 @@ const formatTournament = ({
 
 const tournamentCreateTournament = ({ state, actions }, { contenders }) => {
   try {
+    actions.logger({ message: 'Tournament started' })
     state.tournament.startDate = new Date()
+
     createContenders({ state, contenders })
 
     actions.gamesCreateGames()
 
     actions.navigationChangeNavigation({ gameId: 1, matchId: 1, view: 'game' })
+
+    actions.logger({ message: 'Game 1 Match 1 start, contenders: ' + state.games['1'].conA + ' vs ' + state.games['1'].conB })
   } catch (error) {
     console.error(error)
   }
@@ -33,10 +37,10 @@ const createContenders = ({ state, contenders }) => {
 
 const tournamentFinishTournament = async({ state, actions, effects }) => {
   try {
+    actions.logger({ message: 'Tournament finished' })
     actions.navigationChangeNavigation({ view: 'results' })
 
-    if (process.env.REACT_APP_ENV === 'production')
-      await effects.setTournament({ tournament: formatTournament(state) })
+    await effects.setTournament({ tournament: formatTournament(state) })
   } catch (error) {
     console.error(error)
   }

@@ -19,6 +19,14 @@ const reset = ({ state }) => {
   state.log = []
 }
 
+const logger = ({ state }, { message, type = 'LOG' }) => {
+  state.log.push({
+    dateTime: new Date(),
+    message,
+    type,
+  })
+}
+
 export default {
   ...games,
   ...navigation,
@@ -26,4 +34,5 @@ export default {
   ...tournament,
   onStart,
   reset,
+  logger,
 }

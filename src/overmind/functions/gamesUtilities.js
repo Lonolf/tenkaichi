@@ -20,6 +20,22 @@ export const checkOrder = pairs => {
   return response
 }
 
+export const shuffleArray = array => {
+  let currentIndex = array.length
+  let temporaryValue
+  let randomIndex
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex -= 1
+    temporaryValue = array[currentIndex]
+    array[currentIndex] = array[randomIndex]
+    array[randomIndex] = temporaryValue
+  }
+
+  return array
+}
+
 export const getContendersPairs = contenders =>
   contenders.reduce((list, conA) => {
     contenders.forEach(conB => {

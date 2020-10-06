@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 import { useActions, useOState } from 'overmind/index'
@@ -8,8 +8,6 @@ import Checkbox from '@material-ui/core/Checkbox'
 import Slider from '@material-ui/core/Slider'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-
-import Menu from '@material-ui/icons/Menu'
 
 import Modal from 'components/modal/Modal.jsx'
 
@@ -29,25 +27,6 @@ const useStyles = makeStyles((theme) => ({
     right: 15,
   },
 }))
-
-const Container = () => {
-  const classes = useStyles()
-  const [open, setOpen] = useState(false)
-
-  if (!open)
-    return (
-      <Button
-        color='primary'
-        variant='outlined'
-        className={classes.fab}
-        onClick={() => setOpen(true)}
-      >
-        <Menu />
-      </Button>
-    )
-  else
-    return <RulesSelector props={{ setOpen }} />
-}
 
 const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
   const classes = useStyles()
@@ -104,7 +83,8 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
           onChange={(event, value) => handleChange({ pointsToWin: value })}
         />
         <div style={{ flex: '0 0 25px' }} />
-        <Typography id='pointsToWin' gutterBottom>
+        {/* This is disable to simplify the usability */}
+        {/* <Typography id='pointsToWin' gutterBottom>
           {translator.fromLabel('rulesSelector_pointsForVictory_label') + state.rules.pointsForVictory}
         </Typography>
         <Slider
@@ -116,7 +96,7 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
           max={5}
           onChange={(event, value) => handleChange({ pointsForVictory: value })}
         />
-        <div style={{ flex: '0 0 25px' }} />
+        <div style={{ flex: '0 0 25px' }} /> */}
         <Typography id='pointsToWin' gutterBottom>
           {translator.fromLabel('rulesSelector_maxAdmonitions_label') + state.rules.maxAdmonitions}
         </Typography>
@@ -132,7 +112,7 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
         <Button
           color='primary'
           variant='contained'
-          onClick={onClose}
+          onClick={() => actions.navigationChangeNavigation({ view: 'contendersSelector' })}
         >
           {translator.fromLabel('rulesSelector_close_button')}
         </Button>
@@ -141,4 +121,4 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
   )
 }
 
-export default Container
+export default RulesSelector

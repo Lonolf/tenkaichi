@@ -5,9 +5,11 @@ import { useOState } from 'overmind/index'
 import { makeStyles } from '@material-ui/core/styles'
 
 import ContendersSelector from 'views/contendersSelector/ContendersSelector.jsx'
-import RulesSelector from 'views/rulesSelector/RulesSelector.jsx'
 import Game from 'views/game/Game.jsx'
+import MenuBar from 'views/menuBar/MenuBar.jsx'
 import Results from 'views/results/Results.jsx'
+import RulesSelector from 'views/rulesSelector/RulesSelector.jsx'
+import Tutorial from 'views/tutorial/Tutorial.jsx'
 
 import { useUpdateParams } from 'hooks'
 
@@ -65,17 +67,14 @@ const ContentManager = () => {
 
   return (
     <div className={classes.mainContainer}>
+      {view === 'contendersSelector' ? <MenuBar /> : null}
       <div className={`${classes.secondContainer} ${classes.scrollbars}`}>
-        {view === 'contendersSelector'
-          ? (
-            <>
-              <RulesSelector />
-              <ContendersSelector />
-            </>
-          ) : view === 'game' ? <Game />
-            : view === 'results' ? <Results />
-              : null
-        }
+        {view === 'contendersSelector' ? <ContendersSelector />
+          : view === 'rulesSelector' ? <RulesSelector />
+            : view === 'game' ? <Game />
+              : view === 'results' ? <Results />
+                : view === 'tutorial' ? <Tutorial />
+                  : null}
       </div>
     </div>
   )
