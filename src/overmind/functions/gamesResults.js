@@ -29,7 +29,7 @@ export const calcPoints = ({ newResults, game, rules, rules: { matches = 1, poin
 
 const calcMatchesVictories = ({ game, rules: { doubleDeath = true, pointsToWin = 5 } }) =>
   Object.values(game.matches).reduce((matchesResults, match) => {
-    if (match.finished && !(doubleDeath && match.scoreConA >= pointsToWin && match.scoreConB >= pointsToWin))
+    if (match.status === 'finished' && !(doubleDeath && match.scoreConA >= pointsToWin && match.scoreConB >= pointsToWin))
       if (match.scoreConA >= pointsToWin && match.scoreConA > match.scoreConB)
         matchesResults.aWins++
       else if (match.scoreConB >= pointsToWin && match.scoreConB > match.scoreConA)

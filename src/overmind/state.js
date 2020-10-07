@@ -3,8 +3,24 @@ import results from './state/results'
 
 const state = {
   contenders: {},
-  games: {},
-  log: [],
+  games: {
+    // 1: {
+    //   conA: '',
+    //   conB: '',
+    //   gameId: 1,
+    //   matches: {
+    //     1: {
+    //       status: 'ready', 'ongoing', 'paused', 'finished',
+    //       matchId: 1,
+    //       scoreConA: 0,
+    //       scoreConB: 0,
+    //     }
+    //   }
+    // }
+  },
+  log: [
+    // { dateTime: dateTime, type: 'LOG', message: '' }
+  ],
   navigation: {
     view: 'contendersSelector',
     gameId: null,

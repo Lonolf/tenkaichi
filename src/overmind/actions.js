@@ -1,4 +1,5 @@
 import games from './actions/games'
+import matches from './actions/matches'
 import navigation from './actions/navigation'
 import rules from './actions/rules'
 import tournament from './actions/tournament'
@@ -29,6 +30,7 @@ const logger = ({ state }, { message, type = 'LOG' }) => {
 
 export default {
   ...games,
+  ...matches,
   ...navigation,
   ...rules,
   ...tournament,

@@ -55,8 +55,8 @@ const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adve
       <Toolbar className={classes.scoreLineContainer} disableGutters>
         <Button
           variant='outlined'
-          onClick={() => actions.gamesEditMatch({ gameId, matchId, [scoreName]: score - 1 })}
-          disabled={score < 1 || match.finished}
+          onClick={() => actions.matchesEditMatch({ gameId, matchId, [scoreName]: score - 1 })}
+          disabled={score < 1 || match.status !== 'ongoing'}
         >
           <Remove />
         </Button>
@@ -76,8 +76,8 @@ const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adve
         <div style={{ width: 5 }} />
         <Button
           variant='outlined'
-          onClick={() => actions.gamesEditMatch({ gameId, matchId, [scoreName]: score + 1 })}
-          disabled={match.finished}
+          onClick={() => actions.matchesEditMatch({ gameId, matchId, [scoreName]: score + 1 })}
+          disabled={match.status !== 'ongoing'}
         >
           <Add />
         </Button>
