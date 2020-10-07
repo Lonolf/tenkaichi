@@ -1,1 +1,7 @@
-export const formatMatch = matchId => ({ matchId, scoreConA: 0, scoreConB: 0, status: 'ready' })
+export const formatMatch = matchId => ({
+  matchId,
+  scoreConA: 0,
+  scoreConB: 0,
+  status: 'ready',
+  intervals: [],
+})

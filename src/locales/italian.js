@@ -98,6 +98,11 @@ const scoreCard = {
   scoreline_score_label: 'Punteggio: ',
 }
 
+const footer = {
+  footer_betaWarning: 'ATTENZIONE: versione Beta non stabile',
+  matchTimer_time_label: 'Tempo: ',
+}
+
 export const italian = {
   locale: 'it',
   ...error,
@@ -111,4 +116,5 @@ export const italian = {
   ...contendersList,
   ...contenderDetails,
   ...scoreCard,
+  ...footer,
 }

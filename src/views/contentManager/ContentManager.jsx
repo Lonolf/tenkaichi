@@ -5,6 +5,7 @@ import { useOState } from 'overmind/index'
 import { makeStyles } from '@material-ui/core/styles'
 
 import ContendersSelector from 'views/contendersSelector/ContendersSelector.jsx'
+import FooterButtons from 'views/footerButtons/FooterButtons'
 import Game from 'views/game/Game.jsx'
 import MenuBar from 'views/menuBar/MenuBar.jsx'
 import Results from 'views/results/Results.jsx'
@@ -38,12 +39,12 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.background.contrastText,
   },
   secondContainer: {
-    padding: '5%',
-    paddingTop: 50,
+    padding: '0 5%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     height: '100%',
+    marginBottom: 100,
   },
   siderbarMain: {
     flex: 3,
@@ -75,6 +76,7 @@ const ContentManager = () => {
               : view === 'results' ? <Results />
                 : view === 'tutorial' ? <Tutorial />
                   : null}
+        <FooterButtons />
       </div>
     </div>
   )

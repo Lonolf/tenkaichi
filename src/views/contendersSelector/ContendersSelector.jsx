@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
     position: 'fixed',
     right: 25,
     bottom: 25,
+    zIndex: 100,
   },
 }))
 
