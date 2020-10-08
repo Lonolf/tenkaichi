@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.background.contrastText,
   },
   secondContainer: {
-    padding: '0 5%',
+    padding: '5%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -68,8 +68,8 @@ const ContentManager = () => {
 
   return (
     <div className={classes.mainContainer}>
-      {view === 'contendersSelector' ? <MenuBar /> : null}
       <div className={`${classes.secondContainer} ${classes.scrollbars}`}>
+        {view === 'contendersSelector' ? <MenuBar /> : null}
         {view === 'contendersSelector' ? <ContendersSelector />
           : view === 'rulesSelector' ? <RulesSelector />
             : view === 'game' ? <Game />

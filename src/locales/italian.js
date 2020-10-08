@@ -101,6 +101,10 @@ const scoreCard = {
 const footer = {
   footer_betaWarning: 'ATTENZIONE: versione Beta non stabile',
   matchTimer_time_label: 'Tempo: ',
+  matchTimer_ready_label: 'Pronto',
+  matchTimer_ongoing_label: 'In corso',
+  matchTimer_paused_label: 'In pausa',
+  matchTimer_finished_label: 'Completato',
 }
 
 export const italian = {

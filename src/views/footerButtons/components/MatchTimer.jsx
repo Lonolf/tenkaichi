@@ -43,8 +43,10 @@ const MatchTimer = ({ props: { intervals = [], status = 'ready' } = {} }) => {
   return (
     <div className={classes.bottomContainer}>
       <Typography>
-        {status === 'ready' ? 'Ready'
-          : translator.fromLabel('matchTimer_time_label') + msToHMS(totalTime)}
+        {translator.fromLabel('matchTimer_' + status + '_label')}
+      </Typography>
+      <Typography>
+        {status !== 'ready' ? translator.fromLabel('matchTimer_time_label') + msToHMS(totalTime) : null}
       </Typography>
     </div>
   )

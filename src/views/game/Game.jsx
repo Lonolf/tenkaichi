@@ -22,6 +22,7 @@ const Game = () => {
   return (
     <>
       <TopBar />
+      <div style={{ flex: '1' }} />
       <ScoreCard props={{ contenders: state.contenders, gameId, matchId, game, match }} />
       <div style={{ height: 30 }} />
       {state.games[+gameId + 1] != null
@@ -30,6 +31,7 @@ const Game = () => {
       {game.finished
         ? <Typography style={{ color: 'red' }}>{translator.fromLabel('game_gameFinished_warning')}</Typography>
         : null}
+      <div style={{ flex: '1' }} />
     </>
   )
 }
