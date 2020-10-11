@@ -27,6 +27,7 @@ const state = {
     matchId: null,
   },
   rules: {
+    rulesetId: '',
     doubleDeath: true,
     pointsToWin: 5,
     pointsForVictory: 1,

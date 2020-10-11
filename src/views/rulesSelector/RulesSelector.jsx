@@ -4,6 +4,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import { useActions, useOState } from 'overmind/index'
 
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+import FormControl from '@material-ui/core/FormControl'
+import InputLabel from '@material-ui/core/InputLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Slider from '@material-ui/core/Slider'
 import Typography from '@material-ui/core/Typography'
@@ -12,6 +14,9 @@ import Button from '@material-ui/core/Button'
 import Modal from 'components/modal/Modal.jsx'
 
 import translator from 'utility/translator'
+import { NativeSelect } from '@material-ui/core'
+
+import rulesets from 'assets/rulesets'
 
 const useStyles = makeStyles((theme) => ({
   rulesContainer: {
@@ -36,6 +41,9 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
   const handleChange = values =>
     actions.rulesEditRules(values)
 
+  const setRuleset = event =>
+    actions.rulesSetRuleset({ rulesetId: event.target.value })
+
   const onClose = () => setOpen(false)
 
   return (
@@ -44,6 +52,22 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
         <Typography id='pointsToWin' variant='h4' gutterBottom>
           {translator.fromLabel('rulesSelector_title_label')}
         </Typography>
+        <div style={{ flex: '0 0 25px' }} />
+        <FormControl className={classes.formControl}>
+          <InputLabel htmlFor='ruleset-label'>{translator.fromLabel('rulesSelector_ruleset_label')}</InputLabel>
+          <NativeSelect
+            value={state.rules.rulesetId}
+            onChange={setRuleset}
+            inputProps={{
+              name: 'ruleset',
+              id: 'ruleset-selector',
+            }}
+          >
+            <option aria-label='None' value='' />
+            {Object.values(rulesets).map(ruleset => <option value={ruleset.rulesetId}>{ruleset.label}</option>)}
+          </NativeSelect>
+        </FormControl>
+        <div style={{ flex: '0 0 25px' }} />
         <FormControlLabel
           control={(
             <Checkbox

@@ -72,6 +72,7 @@ const rulesSelector = {
   rulesSelector_pointsForVictory_label: 'Points for victory: ',
   rulesSelector_matches_label: 'Matches per game: ',
   rulesSelector_maxAdmonitions_label: 'Max admonitions: ',
+  rulesSelector_ruleset_label: 'Ruleset',
 }
 
 const contendersList = {
