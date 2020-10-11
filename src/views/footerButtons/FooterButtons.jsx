@@ -4,6 +4,7 @@ import { useOState, useActions } from 'overmind/index'
 
 import Typography from '@material-ui/core/Typography'
 import Fab from '@material-ui/core/Fab'
+import Button from '@material-ui/core/Button'
 
 import Check from '@material-ui/icons/Check'
 import PlayArrow from '@material-ui/icons/PlayArrow'
@@ -25,6 +26,9 @@ const useStyles = makeStyles(theme => ({
   },
   left: {
     flex: '0 0 50px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   center: {
     flex: '1 1 10px',
@@ -35,6 +39,9 @@ const useStyles = makeStyles(theme => ({
   },
   right: {
     flex: '0 0 50px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 }))
 
@@ -103,23 +110,25 @@ const MatchButtons = () => {
       <div className={classes.left}>
         {match.status === 'ongoing'
           ? (
-            <Fab
+            <Button
               className={classes.fabLeft}
               color='secondary'
+              variant='outlined'
               onClick={() => actions.matchesPauseMatch({ gameId, matchId })}
             >
               <Pause />
-            </Fab>
+            </Button>
           ) : null}
         {match.status === 'paused'
           ? (
-            <Fab
+            <Button
               className={classes.fabLeft}
               color='secondary'
+              variant='contained'
               onClick={() => actions.matchesUnpauseMatch({ gameId, matchId })}
             >
               <PlayArrow />
-            </Fab>
+            </Button>
           ) : null}
       </div>
       <div className={classes.center}>

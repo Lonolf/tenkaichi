@@ -1,7 +1,19 @@
+/* global localStorage */
 import firebase from 'overmind/firebase/firebase'
 
-const getUsers = async() =>
-  await firebase.getCollectionDoc({ collectionId: 'users', docId: 'users' })
+const getUsers = async() => ({
+  ...Object.values(await firebase.getCollectionDoc({ collectionId: 'users', docId: 'users' }))
+    .reduce((list, user) => ({ ...list, [user.name]: { ...user, association: 'swordAcademy' } }), {}),
+  ...JSON.parse(localStorage.getItem('tenkaichiUsers') || '[]')
+    .reduce((list, user) => ({ ...list, [user]: { name: user } }), {}),
+})
+
+const usersSetUsers = async({ users }) => {
+  const filterUsers = Object.values(users)
+    .filter(user => user.association == null)
+    .map(user => user.name)
+  localStorage.setItem('tenkaichiUsers', JSON.stringify(filterUsers))
+}
 
 const setTournament = async({ tournament }) => {
   if (process.env.REACT_APP_ENV === 'production')
@@ -10,5 +22,6 @@ const setTournament = async({ tournament }) => {
 
 export default {
   getUsers,
+  usersSetUsers,
   setTournament,
 }

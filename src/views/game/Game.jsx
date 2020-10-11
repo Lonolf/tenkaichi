@@ -3,8 +3,9 @@ import { useOState } from 'overmind/index'
 
 import Typography from '@material-ui/core/Typography'
 
-import ScoreCard from './components/ScoreCard.jsx'
+import ScoreLine from './components/ScoreLine.jsx'
 import TopBar from './components/TopBar.jsx'
+import ActionModal from './components/ActionModal.jsx'
 
 import translator from 'utility/translator'
 
@@ -23,7 +24,11 @@ const Game = () => {
     <>
       <TopBar />
       <div style={{ flex: '1' }} />
-      <ScoreCard props={{ contenders: state.contenders, gameId, matchId, game, match }} />
+      <ScoreLine props={{ gameId, matchId, game, match, scoreName: 'scoreConA', adversaryScoreName: 'scoreConB', contender: state.contenders[game.conA] }} />
+      <div style={{ height: 25 }} />
+      <ActionModal />
+      <div style={{ height: 25 }} />
+      <ScoreLine props={{ gameId, matchId, game, match, scoreName: 'scoreConB', adversaryScoreName: 'scoreConA', contender: state.contenders[game.conB] }} />
       <div style={{ height: 30 }} />
       {state.games[+gameId + 1] != null
         ? <Typography>{'Next game: ' + state.games[+gameId + 1].conA + ' vs ' + state.games[+gameId + 1].conB}</Typography>

@@ -20,6 +20,8 @@ const tournamentCreateTournament = ({ state, actions }, { contenders }) => {
 
     createContenders({ state, contenders })
 
+    actions.usersCreateUsers({ contenders })
+
     actions.gamesCreateGames()
 
     actions.navigationChangeNavigation({ gameId: 1, matchId: 1, view: 'game' })

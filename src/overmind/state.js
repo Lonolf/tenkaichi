@@ -36,6 +36,9 @@ const state = {
   tournament: {
   },
   results: derived(results),
+  settings: {
+    swordAcademy: false,
+  },
   users: {},
 }
 

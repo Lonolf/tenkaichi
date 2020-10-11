@@ -2,10 +2,12 @@ import games from './actions/games'
 import matches from './actions/matches'
 import navigation from './actions/navigation'
 import rules from './actions/rules'
+import settings from './actions/settings'
 import tournament from './actions/tournament'
+import users from './actions/users'
 
-const onStart = async({ state, effects }) => {
-  state.users = await effects.getUsers()
+const onStart = async({ actions }) => {
+  actions.usersGetUsers()
 }
 
 const reset = ({ state }) => {
@@ -33,7 +35,9 @@ export default {
   ...matches,
   ...navigation,
   ...rules,
+  ...settings,
   ...tournament,
+  ...users,
   onStart,
   reset,
   logger,

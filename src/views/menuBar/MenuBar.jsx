@@ -6,8 +6,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
 import Toolbar from '@material-ui/core/Toolbar'
 
-import LiveHelp from '@material-ui/icons/LiveHelp'
-import Menu from '@material-ui/icons/Menu'
+import Help from '@material-ui/icons/Help'
+import MenuBook from '@material-ui/icons/MenuBook'
+import Settings from '@material-ui/icons/Settings'
 
 const useStyles = makeStyles((theme) => ({
   toolbar: {
@@ -32,14 +33,21 @@ const MenuBar = () => {
         variant='outlined'
         onClick={() => actions.navigationChangeNavigation({ view: 'tutorial' })}
       >
-        <LiveHelp />
+        <Help />
       </Button>
       <Button
         color='primary'
         variant='outlined'
         onClick={() => actions.navigationChangeNavigation({ view: 'rulesSelector' })}
       >
-        <Menu />
+        <MenuBook />
+      </Button>
+      <Button
+        color='primary'
+        variant='outlined'
+        onClick={() => actions.navigationChangeNavigation({ view: 'settingsSelector' })}
+      >
+        <Settings />
       </Button>
     </Toolbar>
   )

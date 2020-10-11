@@ -10,6 +10,7 @@ import Game from 'views/game/Game.jsx'
 import MenuBar from 'views/menuBar/MenuBar.jsx'
 import Results from 'views/results/Results.jsx'
 import RulesSelector from 'views/rulesSelector/RulesSelector.jsx'
+import SettingsSelector from 'views/settingsSelector/SettingsSelector.jsx'
 import Tutorial from 'views/tutorial/Tutorial.jsx'
 
 import { useUpdateParams } from 'hooks'
@@ -72,10 +73,11 @@ const ContentManager = () => {
         {view === 'contendersSelector' ? <MenuBar /> : null}
         {view === 'contendersSelector' ? <ContendersSelector />
           : view === 'rulesSelector' ? <RulesSelector />
-            : view === 'game' ? <Game />
-              : view === 'results' ? <Results />
-                : view === 'tutorial' ? <Tutorial />
-                  : null}
+            : view === 'settingsSelector' ? <SettingsSelector />
+              : view === 'game' ? <Game />
+                : view === 'results' ? <Results />
+                  : view === 'tutorial' ? <Tutorial />
+                    : null}
         <FooterButtons />
       </div>
     </div>

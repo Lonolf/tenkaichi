@@ -32,6 +32,14 @@ const matchesEditMatch = ({ state }, { gameId, matchId, ...values }) => {
   state.games[gameId].matches[matchId] = { ...state.games[gameId].matches[matchId], ...values }
 }
 
+const matchesCreateAction = ({ state }, { gameId, matchId, scoreConA, scoreConB }) => {
+  const match = state.games[gameId].matches[matchId]
+  if (scoreConA != null)
+    match.scoreConA += scoreConA
+  if (scoreConB != null)
+    match.scoreConB += scoreConB
+}
+
 const matchesFinishMatch = ({ state, actions }, { gameId, matchId }) => {
   try {
     const match = state.games[gameId].matches[matchId]
@@ -55,5 +63,6 @@ export default {
   matchesPauseMatch,
   matchesUnpauseMatch,
   matchesEditMatch,
+  matchesCreateAction,
   matchesFinishMatch,
 }

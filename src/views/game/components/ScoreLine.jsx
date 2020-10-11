@@ -6,8 +6,6 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
 
-import Add from '@material-ui/icons/Add'
-import Remove from '@material-ui/icons/Remove'
 import ThumbDown from '@material-ui/icons/ThumbDown'
 import { Typography } from '@material-ui/core'
 
@@ -15,7 +13,6 @@ import translator from 'utility/translator'
 
 const useStyles = makeStyles(theme => ({
   scoreContainer: {
-    paddingTop: 75,
     width: '100%',
   },
   scoreLineContainer: {
@@ -30,18 +27,6 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const ScoreCard = ({ props, props: { contenders, game: { conA, conB } = {} } = {} }) => {
-  const classes = useStyles()
-
-  return (
-    <div className={classes.scoreContainer}>
-      <ScoreLine props={{ ...props, scoreName: 'scoreConA', adversaryScoreName: 'scoreConB', contender: contenders[conA] }} />
-      <div style={{ height: 25 }} />
-      <ScoreLine props={{ ...props, scoreName: 'scoreConB', adversaryScoreName: 'scoreConA', contender: contenders[conB] }} />
-    </div>
-  )
-}
-
 const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adversaryScoreName } = {} } = {}) => {
   const actions = useActions()
   const classes = useStyles()
@@ -50,16 +35,16 @@ const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adve
   const score = match[scoreName]
 
   return (
-    <>
+    <div className={classes.scoreContainer}>
       <Divider />
       <Toolbar className={classes.scoreLineContainer} disableGutters>
-        <Button
+        {/* <Button
           variant='outlined'
           onClick={() => actions.matchesEditMatch({ gameId, matchId, [scoreName]: score - 1 })}
           disabled={score < 1 || match.status !== 'ongoing'}
         >
           <Remove />
-        </Button>
+        </Button> */}
         <div className={classes.nameContainer}>
           <div><Typography>{contender.name}</Typography></div>
           <div><Typography>{translator.fromLabel('scoreline_score_label') + score}</Typography></div>
@@ -74,17 +59,17 @@ const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adve
           {contender.admonitions}
         </Button>
         <div style={{ width: 5 }} />
-        <Button
+        {/* <Button
           variant='outlined'
           onClick={() => actions.matchesEditMatch({ gameId, matchId, [scoreName]: score + 1 })}
           disabled={match.status !== 'ongoing'}
         >
           <Add />
-        </Button>
+        </Button> */}
       </Toolbar>
       <Divider />
-    </>
+    </div>
   )
 }
 
-export default ScoreCard
+export default ScoreLine

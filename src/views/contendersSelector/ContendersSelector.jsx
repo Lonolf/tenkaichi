@@ -38,7 +38,9 @@ const ContendersSelector = () => {
 
   const filterOptions = () =>
     Object.values(state.users)
-      .filter(option => !contenders.some(contender => contender.name === option.name))
+      .filter(user => (state.settings.swordAcademy || user.association !== 'swordAcademy') &&
+       !contenders.some(contender => contender.name === user.name))
+      .sort((a, b) => a.name > b.name ? 1 : -1)
 
   const createContender = ({ index }) => {
     if (contenders.length - 1 === index)

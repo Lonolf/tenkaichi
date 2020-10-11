@@ -98,6 +98,12 @@ const scoreCard = {
   scoreline_score_label: 'Punteggio: ',
 }
 
+const settingsSelector = {
+  settingsSelector_title_label: 'Impostazioni',
+  settingsSelector_swordAcademy_label: 'Sword Academy',
+  settingsSelector_close_button: 'Chiudi',
+}
+
 const footer = {
   footer_betaWarning: 'ATTENZIONE: versione Beta non stabile',
   matchTimer_time_label: 'Tempo: ',
@@ -120,5 +126,6 @@ export const italian = {
   ...contendersList,
   ...contenderDetails,
   ...scoreCard,
+  ...settingsSelector,
   ...footer,
 }

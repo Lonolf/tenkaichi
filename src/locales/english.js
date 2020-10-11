@@ -97,6 +97,12 @@ const scoreCard = {
   scoreline_score_label: 'Score: ',
 }
 
+const settingsSelector = {
+  settingsSelector_title_label: 'Settings',
+  settingsSelector_swordAcademy_label: 'Sword Academy',
+  settingsSelector_close_button: 'Close',
+}
+
 const footer = {
   footer_betaWarning: 'WARNING: beta version, not stable',
   matchTimer_time_label: 'Time: ',
@@ -119,5 +125,6 @@ export const english = {
   ...contendersList,
   ...contenderDetails,
   ...scoreCard,
+  ...settingsSelector,
   ...footer,
 }
