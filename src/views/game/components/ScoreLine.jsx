@@ -5,9 +5,11 @@ import { useActions, useOState } from 'overmind/index'
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
 import Divider from '@material-ui/core/Divider'
+import Typography from '@material-ui/core/Typography'
 
 import ThumbDown from '@material-ui/icons/ThumbDown'
-import { Typography } from '@material-ui/core'
+import Add from '@material-ui/icons/Add'
+import Remove from '@material-ui/icons/Remove'
 
 import translator from 'utility/translator'
 
@@ -30,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adversaryScoreName } = {} } = {}) => {
   const actions = useActions()
   const classes = useStyles()
-  useOState()
+  const state = useOState()
 
   const score = match[scoreName]
 
@@ -38,13 +40,16 @@ const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adve
     <div className={classes.scoreContainer}>
       <Divider />
       <Toolbar className={classes.scoreLineContainer} disableGutters>
-        {/* <Button
-          variant='outlined'
-          onClick={() => actions.matchesEditMatch({ gameId, matchId, [scoreName]: score - 1 })}
-          disabled={score < 1 || match.status !== 'ongoing'}
-        >
-          <Remove />
-        </Button> */}
+        {!state.settings.actionsButton
+          ? (
+            <Button
+              variant='outlined'
+              onClick={() => actions.matchesEditMatch({ gameId, matchId, [scoreName]: score - 1 })}
+              disabled={score < 1 || match.status !== 'ongoing'}
+            >
+              <Remove />
+            </Button>
+          ) : null}
         <div className={classes.nameContainer}>
           <div><Typography>{contender.name}</Typography></div>
           <div><Typography>{translator.fromLabel('scoreline_score_label') + score}</Typography></div>
@@ -59,13 +64,16 @@ const ScoreLine = ({ props: { gameId, matchId, match, contender, scoreName, adve
           {contender.admonitions}
         </Button>
         <div style={{ width: 5 }} />
-        {/* <Button
-          variant='outlined'
-          onClick={() => actions.matchesEditMatch({ gameId, matchId, [scoreName]: score + 1 })}
-          disabled={match.status !== 'ongoing'}
-        >
-          <Add />
-        </Button> */}
+        {!state.settings.actionsButton
+          ? (
+            <Button
+              variant='outlined'
+              onClick={() => actions.matchesEditMatch({ gameId, matchId, [scoreName]: score + 1 })}
+              disabled={match.status !== 'ongoing'}
+            >
+              <Add />
+            </Button>
+          ) : null}
       </Toolbar>
       <Divider />
     </div>

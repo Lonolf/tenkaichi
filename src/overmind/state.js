@@ -38,6 +38,7 @@ const state = {
   results: derived(results),
   settings: {
     swordAcademy: false,
+    actionsButton: true,
   },
   users: {},
 }

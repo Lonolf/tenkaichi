@@ -42,21 +42,22 @@ const ContendersSelector = () => {
        !contenders.some(contender => contender.name === user.name))
       .sort((a, b) => a.name > b.name ? 1 : -1)
 
-  const createContender = ({ index }) => {
-    if (contenders.length - 1 === index)
-      setContenders([...contenders, { name: '' }])
-  }
-
   const changeName = ({ name, index }) => {
-    const newContenders = [...contenders]
-    newContenders[index] = { ...contenders[index], name }
-    setContenders(newContenders)
+    if (contenders[index].name !== name) {
+      const newContenders = [...contenders]
+      newContenders[index] = { ...contenders[index], name }
+
+      if (newContenders[newContenders.length - 1].name !== '')
+        newContenders.push({ name: '' })
+
+      setContenders(newContenders)
+    }
   }
 
   const deleteContender = ({ index, force = false }) => {
-    if (force || (contenders[index].name === '' && index === contenders.length - 2)) {
+    if (force || (contenders[index].name === '')) {
       const newContenders = [...contenders]
-      newContenders.splice(newContenders.indexOf(index), 1)
+      newContenders[index].name = ''
       setContenders(newContenders)
     }
   }
@@ -97,11 +98,12 @@ const ContendersSelector = () => {
                 renderInput={(params) => (
                   <TextField
                     {...params}
+                    onChange={(event, option) => {
+                      changeName({ name: event.target.value, index })
+                    }}
                     label={translator.fromLabel('contendersSelector_name_label')}
                     variant='filled'
                     value={contender.name}
-                    onFocus={() => createContender({ index })}
-                    onBlur={() => deleteContender({ index })}
                     error={errors[index] != null}
                     helperText={errors[index] || ''}
                   />

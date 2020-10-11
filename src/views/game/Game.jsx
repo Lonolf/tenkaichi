@@ -26,17 +26,18 @@ const Game = () => {
       <div style={{ flex: '1' }} />
       <ScoreLine props={{ gameId, matchId, game, match, scoreName: 'scoreConA', adversaryScoreName: 'scoreConB', contender: state.contenders[game.conA] }} />
       <div style={{ height: 25 }} />
-      <ActionModal />
+      {state.settings.actionsButton ? <ActionModal /> : null}
       <div style={{ height: 25 }} />
       <ScoreLine props={{ gameId, matchId, game, match, scoreName: 'scoreConB', adversaryScoreName: 'scoreConA', contender: state.contenders[game.conB] }} />
       <div style={{ height: 30 }} />
-      {state.games[+gameId + 1] != null
-        ? <Typography>{'Next game: ' + state.games[+gameId + 1].conA + ' vs ' + state.games[+gameId + 1].conB}</Typography>
-        : <Typography style={{ fontWeight: 'bold' }}>{translator.fromLabel('game_lastGame_warning')}</Typography>}
       {game.finished
         ? <Typography style={{ color: 'red' }}>{translator.fromLabel('game_gameFinished_warning')}</Typography>
         : null}
-      <div style={{ flex: '1' }} />
+      <div style={{ flex: '1 0 30px' }} />
+      {state.games[+gameId + 1] != null
+        ? <Typography>{'Next game: ' + state.games[+gameId + 1].conA + ' vs ' + state.games[+gameId + 1].conB}</Typography>
+        : <Typography style={{ fontWeight: 'bold' }}>{translator.fromLabel('game_lastGame_warning')}</Typography>}
+      <div style={{ flex: '0 0 30px' }} />
     </>
   )
 }

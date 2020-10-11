@@ -101,6 +101,7 @@ const scoreCard = {
 const settingsSelector = {
   settingsSelector_title_label: 'Impostazioni',
   settingsSelector_swordAcademy_label: 'Sword Academy',
+  settingsSelector_actionsButton_label: 'Bottone azioni',
   settingsSelector_close_button: 'Chiudi',
 }
 

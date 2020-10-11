@@ -55,6 +55,18 @@ const SettingsSelector = ({ props: { setOpen = () => {} } = {} }) => {
           )}
           label={translator.fromLabel('settingsSelector_swordAcademy_label')}
         />
+        <div style={{ height: 25 }} />
+        <FormControlLabel
+          control={(
+            <Checkbox
+              color='primary'
+              checked={state.settings.actionsButton}
+              onChange={() => handleChange({ actionsButton: !state.settings.actionsButton })}
+              name='doubleDeath'
+            />
+          )}
+          label={translator.fromLabel('settingsSelector_actionsButton_label')}
+        />
         <div style={{ flex: '1 0 25px' }} />
         <Button
           color='primary'

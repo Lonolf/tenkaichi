@@ -100,6 +100,7 @@ const scoreCard = {
 const settingsSelector = {
   settingsSelector_title_label: 'Settings',
   settingsSelector_swordAcademy_label: 'Sword Academy',
+  settingsSelector_actionsButton_label: 'Actions button',
   settingsSelector_close_button: 'Close',
 }
 
