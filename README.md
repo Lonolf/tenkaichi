@@ -20,19 +20,14 @@ This app will assiste the management of small and big (soon) tournaments for you
 - Action-per-action match management
 - Contenders names memory
 - Settings and rules memory (soon)
-- Associations and federations rules (soon)
+- Associations and federations rules (to be completed)
 
 ## Rules supported
 
-- Double Death
-  If active, no points will be assigned if both contenders have surpassed the "Score to win the match"
-- Matches per game
-  Number of matches per game. The software will determine the winner of a game on a basis of a "best of" rule: if one of the contender have win the half + 1 of the number of matches per game, the game is considered finished.
-  If, at the end of the last match, no contender have win the half + 1 number of matches, the game is considered a draw.
-- Points to win a match
-  Minimum number of points necessary to gain the victory of a match. If no contender have surpassed the minimum, the match will not be assigned.
-- Maximum admonitions
-  If a contender is given an admonition over the maximum number, a point will be assigned to the adversary.
+- Double Death: if active, no points will be assigned if both contenders have surpassed the "Score to win the match"
+- Matches per game: The software will determine the winner of a game on a basis of a "best of" rule: if one of the contender have win the half + 1 of the number of matches per game, the game is considered finished. If, at the end of the last match, no contender have win the half + 1 number of matches, the game is considered a draw.
+- Points to win a match: Minimum number of points necessary to gain the victory of a match. If no contender have surpassed the minimum, the match will not be assigned.
+- Maximum admonitions: If a contender is given an admonition over the maximum number, a point will be assigned to the adversary.
 
 
 ## Technology
