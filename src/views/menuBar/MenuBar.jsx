@@ -31,7 +31,7 @@ const MenuBar = () => {
       <Button
         color='primary'
         variant='outlined'
-        onClick={() => actions.navigationChangeNavigation({ view: 'tutorial' })}
+        onClick={() => window.open('https://github.com/Lonolf/tenkaichi', '_blank')}
       >
         <Help />
       </Button>

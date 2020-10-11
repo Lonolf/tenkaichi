@@ -49,6 +49,7 @@ const toPrice = price => {
 
 const contendersSelector = {
   contendersSelector_title: 'Contenders',
+  contendersSelector_easterEgg_subtitle: 'Iron Bucket go back to work!',
   contendersSelector_name_label: 'Name of contender',
 }
 

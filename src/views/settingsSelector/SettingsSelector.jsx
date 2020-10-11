@@ -48,18 +48,6 @@ const SettingsSelector = ({ props: { setOpen = () => {} } = {} }) => {
           control={(
             <Checkbox
               color='primary'
-              checked={state.settings.swordAcademy}
-              onChange={() => handleChange({ swordAcademy: !state.settings.swordAcademy })}
-              name='doubleDeath'
-            />
-          )}
-          label={translator.fromLabel('settingsSelector_swordAcademy_label')}
-        />
-        <div style={{ height: 25 }} />
-        <FormControlLabel
-          control={(
-            <Checkbox
-              color='primary'
               checked={state.settings.actionsButton}
               onChange={() => handleChange({ actionsButton: !state.settings.actionsButton })}
               name='doubleDeath'

@@ -30,16 +30,22 @@ const ContendersSelector = () => {
   const [errors, setErrors] = useState({})
   const actions = useActions()
   const state = useOState()
+  let easterEggCounter = 0
 
   useEffect(() => {
     checkErrors()
   // eslint-disable-next-line
   }, [contenders])
 
+  const easterEgg = () => {
+    easterEggCounter++
+    if (easterEggCounter > 4)
+      actions.usersGetSwordAcademyUsers()
+  }
+
   const filterOptions = () =>
     Object.values(state.users)
-      .filter(user => (state.settings.swordAcademy || user.association !== 'swordAcademy') &&
-       !contenders.some(contender => contender.name === user.name))
+      .filter(user => !contenders.some(contender => contender.name === user.name))
       .sort((a, b) => a.name > b.name ? 1 : -1)
 
   const changeName = ({ name, index }) => {
@@ -75,7 +81,8 @@ const ContendersSelector = () => {
   return (
     <>
       <div style={{ height: 30 }} />
-      <Typography variant='h4'>{translator.fromLabel('contendersSelector_title')}</Typography>
+      <Typography onClick={easterEgg} variant='h4'>{translator.fromLabel('contendersSelector_title')}</Typography>
+      {state.settings.swordAcademy ? <Typography variant='subtitle1'>{translator.fromLabel('contendersSelector_easterEgg_subtitle')}</Typography> : null}
       <div style={{ height: 15 }} />
       <List>
         <Divider />

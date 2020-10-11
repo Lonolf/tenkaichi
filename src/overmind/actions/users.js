@@ -1,5 +1,10 @@
+const usersGetSwordAcademyUsers = async({ state, effects }) => {
+  state.users = { ...state.users, ...await effects.usersGetSwordAcademyUsers() }
+  state.settings.swordAcademy = true
+}
+
 const usersGetUsers = async({ state, effects }) => {
-  state.users = await effects.getUsers()
+  state.users = await effects.usersGetUsers()
 }
 
 const usersCreateUsers = async({ state, effects }, { contenders }) => {
@@ -12,6 +17,7 @@ const usersCreateUsers = async({ state, effects }, { contenders }) => {
 }
 
 export default {
+  usersGetSwordAcademyUsers,
   usersGetUsers,
   usersCreateUsers,
 }

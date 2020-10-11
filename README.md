@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## WARNING: THE APP is still in Beta - use at your own risk
 
-## Available Scripts
+Deploys:
+- [Netlify](https://elegant-mahavira-401723.netlify.app/)
 
-In the project directory, you can run:
+# Tenkaichi
 
-### `npm start`
+It is official opened the first tournament of martial arts...
+Sorry, wrong notes
+...
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+It is with big joy that I present you the new app to manage your tournaments, realized with the assistance of the [Sword Academy](https://sword.academy) of Como, Italy.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+This app will assiste the management of small and big (soon) tournaments for your association.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Multiple games and matches managements
+- Automatic points and scores calculation
+- Action-per-action match management
+- Contenders names memory
+- Settings and rules memory (soon)
+- Associations and federations rules (soon)
 
-### `npm run build`
+## Rules supported
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Double Death
+  If active, no points will be assigned if both contenders have surpassed the "Score to win the match"
+- Matches per game
+  Number of matches per game. The software will determine the winner of a game on a basis of a "best of" rule: if one of the contender have win the half + 1 of the number of matches per game, the game is considered finished.
+  If, at the end of the last match, no contender have win the half + 1 number of matches, the game is considered a draw.
+- Points to win a match
+  Minimum number of points necessary to gain the victory of a match. If no contender have surpassed the minimum, the match will not be assigned.
+- Maximum admonitions
+  If a contender is given an admonition over the maximum number, a point will be assigned to the adversary.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technology
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- [React](https://reactjs.org)
+  - DOM management
+- [Overmind JS](https://overmindjs.org)
+  - State management
+- [Material ui](https://material-ui.com)
+  - Graphic interface and components
+- [Firebase](https://firebase.google.com)
+  - Database, logs and user authentication (soon)
+- [Netlify](https://www.netlify.com/)
+  - Deployment
