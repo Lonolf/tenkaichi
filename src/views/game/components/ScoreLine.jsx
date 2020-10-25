@@ -27,6 +27,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center',
   },
+  button: {
+    color: 'darkred',
+  },
 }))
 
 const ScoreLine = ({
@@ -68,7 +71,6 @@ const ScoreLine = ({
         </div>
         <Button
           variant='outlined'
-          color='primary'
           className={classes.button}
           startIcon={<ThumbDown />}
           onClick={() => addAdmonition()}

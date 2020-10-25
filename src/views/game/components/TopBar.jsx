@@ -18,6 +18,10 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     justifyContent: 'space-between',
     textAlign: 'center',
+    position: 'absolute',
+    top: 0,
+    backgroundColor: theme.palette.background.paper,
+    padding: '20px 0px',
   },
   fab: {
     position: 'fixed',
@@ -42,16 +46,12 @@ const TopBar = () => {
   return (
     <Toolbar className={classes.topBarContainer} disableGutters>
       <Button
-        size='small'
-        variant='outlined'
         disabled={gameId <= 1}
         onClick={() => actions.navigationChangeNavigation({ gameId: gameId - 1 })}
       >
         <FastRewind />
       </Button>
       <Button
-        size='small'
-        variant='outlined'
         disabled={matchId <= 1}
         onClick={() => actions.navigationChangeNavigation({ matchId: matchId - 1 })}
       >
@@ -62,16 +62,12 @@ const TopBar = () => {
         {' ' + gameId + ' ' + matchId + '/' + state.rules.matches }
       </Typography>
       <Button
-        size='small'
-        variant='outlined'
         disabled={game.matches[matchId + 1] == null}
         onClick={() => actions.navigationChangeNavigation({ matchId: matchId + 1 })}
       >
         <ArrowRight />
       </Button>
       <Button
-        size='small'
-        variant='outlined'
         disabled={gameId >= Object.keys(state.games).length}
         onClick={() => actions.navigationChangeNavigation({ gameId: gameId + 1 })}
       >

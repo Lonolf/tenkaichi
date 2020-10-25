@@ -57,6 +57,7 @@ const game = {
   game_title: 'Game',
   game_gameFinished_warning: 'Finished game',
   game_lastGame_warning: 'Last game',
+  game_saveAction_button: 'Save action',
 }
 
 const results = {

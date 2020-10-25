@@ -16,7 +16,7 @@ const Game = () => {
   const gameId = Number(state.navigation.gameId)
   const matchId = Number(state.navigation.matchId)
 
-  useEffect(() => setValues({ scoreConaA: 0, scoreConB: 0 }), [matchId])
+  useEffect(() => setValues({ scoreConA: 0, scoreConB: 0 }), [matchId])
 
   if (state.games[gameId] == null || state.games[gameId].matches[matchId] == null)
     return 'No Game or Match found'
@@ -52,7 +52,7 @@ const Game = () => {
   return (
     <>
       <TopBar />
-      <div style={{ flex: '1' }} />
+      <div style={{ flex: '3 0 75px' }} />
       <ScoreLine props={{ contender: state.contenders[game.conA], score: match.scoreConA, actionScore: values.scoreConA, scoreName: 'scoreConA', addAdmonition, addScore, removeScore, buttonsDisabled, actionsEnabled }} />
       <div style={{ height: 25 }} />
       <ActionModal props={{ saveAction, values, actionsEnabled }} />

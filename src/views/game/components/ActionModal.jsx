@@ -3,6 +3,8 @@ import { useOState } from 'overmind/index'
 
 import Button from '@material-ui/core/Button'
 
+import translator from 'utility/translator'
+
 const ActionModal = ({ props: { values: { scoreConA, scoreConB } = {}, saveAction = () => {}, actionsEnabled = false } }) => {
   const state = useOState()
   const gameId = Number(state.navigation.gameId)
@@ -24,7 +26,7 @@ const ActionModal = ({ props: { values: { scoreConA, scoreConB } = {}, saveActio
         onClick={saveAction}
         disabled={match.status !== 'ongoing' || !buttonEnabled}
       >
-        SAVE ACTION
+        {translator.fromLabel('game_saveAction_button')}
       </Button>
     )
 }
