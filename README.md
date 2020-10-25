@@ -1,7 +1,7 @@
 ## WARNING: THE APP is still in Beta - use at your own risk
 
 Deploys:
-- [Netlify](https://elegant-mahavira-401723.netlify.app/)
+- [Netlify](https://tenkaichi.netlify.app/)
 
 # Tenkaichi
 
@@ -12,6 +12,23 @@ Sorry, wrong notes
 It is with big joy that I present you the new app to manage your tournaments, realized with the assistance of the [Sword Academy](https://sword.academy) of Como, Italy.
 
 This app will assiste the management of small and big (soon) tournaments for your association.
+
+## Walkthrough
+
+- With the rules (📖) and the settings buttons (*), configure your tournaments rules
+- Insert the name of your contenders and press Start (>)
+- Start (>), pause (||) and terminate (✔) every match with the actions button at the bottom
+
+With action button:
+- Insert the number of points for every contender with the plus (+) and minus (-)
+- Save the action with the central button
+
+Without action button
+- Insert the number of points for every contender with the plus (+) and minus (-)
+
+- When terminating a match, the programm will calculate if a new match is necessary, or if the game is finished
+
+- When all games are finished, click on a name on the result table to see all the statistics of the contender
 
 ## Features
 

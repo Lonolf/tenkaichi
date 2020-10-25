@@ -64,7 +64,7 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
             }}
           >
             <option aria-label='None' value='' />
-            {Object.values(rulesets).map(ruleset => <option value={ruleset.rulesetId}>{ruleset.label}</option>)}
+            {Object.values(rulesets).map(ruleset => <option key={ruleset.rulesetId} value={ruleset.rulesetId}>{ruleset.label}</option>)}
           </NativeSelect>
         </FormControl>
         <div style={{ flex: '0 0 25px' }} />

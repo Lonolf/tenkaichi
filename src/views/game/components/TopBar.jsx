@@ -47,7 +47,7 @@ const TopBar = () => {
     <Toolbar className={classes.topBarContainer} disableGutters>
       <Button
         disabled={gameId <= 1}
-        onClick={() => actions.navigationChangeNavigation({ gameId: gameId - 1 })}
+        onClick={() => actions.navigationGoPreviousGame()}
       >
         <FastRewind />
       </Button>
@@ -69,7 +69,7 @@ const TopBar = () => {
       </Button>
       <Button
         disabled={gameId >= Object.keys(state.games).length}
-        onClick={() => actions.navigationChangeNavigation({ gameId: gameId + 1 })}
+        onClick={() => actions.navigationGoNextGame()}
       >
         <FastForward />
       </Button>
