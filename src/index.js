@@ -33,16 +33,16 @@ const theme = createMuiTheme({
     xAxisNumber: 18,
   },
   palette: {
-    type: 'light',
-    background: { default: '#c2b280', contrastText: '#8b0000', paper: '#c2b280' },
+    type: 'dark',
+    background: { default: '#252c33', contrastText: '#fff', paper: '#111417' },
     primary: {
-      main: '#8b0000',
-      contrastText: '#fff',
+      main: '#ff9500',
+      contrastText: '#000',
     },
     secondary: {
       main: 'rgb(232, 232, 232)',
       dark: 'rgb(190, 190, 190)',
-      contrastText: '#000',
+      contrastText: '#fff',
     },
     error: {
       main: '#ba261a',

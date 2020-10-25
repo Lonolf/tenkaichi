@@ -1,5 +1,5 @@
-import React from 'react'
-import { useOState } from 'overmind/index'
+import React, { useState, useEffect } from 'react'
+import { useOState, useActions } from 'overmind/index'
 
 import Typography from '@material-ui/core/Typography'
 
@@ -11,24 +11,53 @@ import translator from 'utility/translator'
 
 const Game = () => {
   const state = useOState()
+  const actions = useActions()
+  const [values, setValues] = useState({ scoreConA: 0, scoreConB: 0 })
   const gameId = Number(state.navigation.gameId)
   const matchId = Number(state.navigation.matchId)
 
+  useEffect(() => setValues({ scoreConaA: 0, scoreConB: 0 }), [matchId])
+
   if (state.games[gameId] == null || state.games[gameId].matches[matchId] == null)
-    return null
+    return 'No Game or Match found'
 
   const game = state.games[gameId]
   const match = game.matches[matchId]
+  const buttonsDisabled = match.status !== 'ongoing'
+  const actionsEnabled = state.settings.actionsButton
+
+  const addScore = ({ scoreName }) => {
+    if (state.settings.actionsButton)
+      setValues({ ...values, [scoreName]: values[scoreName] + 1 })
+    else
+      actions.matchesEditMatch({ gameId, matchId, [scoreName]: match[scoreName] + 1 })
+  }
+
+  const removeScore = ({ scoreName }) => {
+    if (state.settings.actionsButton)
+      setValues({ ...values, [scoreName]: values[scoreName] - 1 })
+    else
+      actions.matchesEditMatch({ gameId, matchId, [scoreName]: match[scoreName] - 1 })
+  }
+
+  const saveAction = () => {
+    actions.matchesCreateAction({ gameId, matchId, scoreConA: values.scoreConA, scoreConB: values.scoreConB })
+    setValues({ scoreConA: 0, scoreConB: 0 })
+  }
+
+  const addAdmonition = ({ name, scoreName }) => {
+    actions.gamesAddAdmonition({ gameId, matchId, name, adversaryScoreName: scoreName === 'scoreConA' ? 'scoreConB' : 'scoreConA' })
+  }
 
   return (
     <>
       <TopBar />
       <div style={{ flex: '1' }} />
-      <ScoreLine props={{ gameId, matchId, game, match, scoreName: 'scoreConA', adversaryScoreName: 'scoreConB', contender: state.contenders[game.conA] }} />
+      <ScoreLine props={{ contender: state.contenders[game.conA], score: match.scoreConA, actionScore: values.scoreConA, scoreName: 'scoreConA', addAdmonition, addScore, removeScore, buttonsDisabled, actionsEnabled }} />
       <div style={{ height: 25 }} />
-      {state.settings.actionsButton ? <ActionModal /> : null}
+      <ActionModal props={{ saveAction, values, actionsEnabled }} />
       <div style={{ height: 25 }} />
-      <ScoreLine props={{ gameId, matchId, game, match, scoreName: 'scoreConB', adversaryScoreName: 'scoreConA', contender: state.contenders[game.conB] }} />
+      <ScoreLine props={{ contender: state.contenders[game.conB], score: match.scoreConB, actionScore: values.scoreConB, scoreName: 'scoreConB', addAdmonition, addScore, removeScore, buttonsDisabled, actionsEnabled }} />
       <div style={{ height: 30 }} />
       {game.finished
         ? <Typography style={{ color: 'red' }}>{translator.fromLabel('game_gameFinished_warning')}</Typography>

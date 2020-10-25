@@ -93,9 +93,10 @@ const ContendersSelector = () => {
                 id='contenderSelector'
                 options={filterOptions()}
                 getOptionLabel={option => option.name || option}
-                style={{ width: 300 }}
+                style={{ width: 300, color: 'white' }}
                 freeSolo
                 autoSelect
+                color='primary'
                 onChange={(event, option) => {
                   if (option == null)
                     deleteContender({ index, force: true })
@@ -113,6 +114,7 @@ const ContendersSelector = () => {
                     value={contender.name}
                     error={errors[index] != null}
                     helperText={errors[index] || ''}
+                    autoFocus={index === 0}
                   />
                 )}
               />

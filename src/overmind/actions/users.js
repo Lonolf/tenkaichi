@@ -3,8 +3,15 @@ const usersGetSwordAcademyUsers = async({ state, effects }) => {
   state.settings.swordAcademy = true
 }
 
-const usersGetUsers = async({ state, effects }) => {
-  state.users = await effects.usersGetUsers()
+const usersGetUsers = async({ state, actions, effects }) => {
+  try {
+    actions.createLoading('getUsers')
+    state.users = await effects.usersGetUsers()
+    actions.deleteLoading('getUsers')
+  } catch (error) {
+    console.error(error)
+    actions.createError(error)
+  }
 }
 
 const usersCreateUsers = async({ state, effects }, { contenders }) => {

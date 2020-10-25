@@ -2,6 +2,8 @@ import { derived } from 'overmind'
 import results from './state/results'
 
 const state = {
+  loading: [],
+  errors: {},
   contenders: {},
   games: {
     // 1: {

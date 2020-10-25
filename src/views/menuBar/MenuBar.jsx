@@ -29,21 +29,21 @@ const MenuBar = () => {
   return (
     <Toolbar className={classes.toolbar}>
       <Button
-        color='primary'
+        color='secondary'
         variant='outlined'
         onClick={() => window.open('https://github.com/Lonolf/tenkaichi', '_blank')}
       >
         <Help />
       </Button>
       <Button
-        color='primary'
+        color='secondary'
         variant='outlined'
         onClick={() => actions.navigationChangeNavigation({ view: 'rulesSelector' })}
       >
         <MenuBook />
       </Button>
       <Button
-        color='primary'
+        color='secondary'
         variant='outlined'
         onClick={() => actions.navigationChangeNavigation({ view: 'settingsSelector' })}
       >
