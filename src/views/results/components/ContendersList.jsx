@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 
-import { useOState } from 'overmind/index'
+import { useSelector } from 'react-redux'
+import selectors from 'redux/selectors'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
@@ -21,10 +22,10 @@ const useStyles = makeStyles(theme => ({
 const ContendersList = () => {
   const [order, setOrder] = useState('points')
   const [showDetails, setShowDetails] = useState(null)
-  const state = useOState()
+  const results = useSelector(selectors.selectResults)
   const classes = useStyles()
 
-  const orderedResults = Object.values(state.results)
+  const orderedResults = Object.values(results)
     .sort((a, b) => {
       switch (order) {
         case 'points':

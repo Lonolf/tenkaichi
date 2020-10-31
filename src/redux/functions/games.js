@@ -1,14 +1,19 @@
-import { getContendersPairs, checkOrder, shuffleArray } from 'overmind/functions/gamesUtilities'
-import { formatMatch } from 'overmind/functions/format'
+import { getContendersPairs, checkOrder, shuffleArray } from 'redux/pureFunctions/gamesUtilities'
+import { formatMatch } from 'redux/pureFunctions/format'
+import functions from 'redux/functions'
+import store from 'redux/store'
+import actions from 'redux/actions'
+const { getState, dispatch } = store
 
-const gamesCreateGames = ({ state, actions }) => {
+const gamesCreateGames = () => {
   try {
+    const state = getState()
     //   const contenders = ['a', 'b', 'c', 'd', 'e', 'f']
     const contenders = Object.keys(state.contenders)
 
     const contendersPairs = checkOrder(shuffleArray(getContendersPairs(contenders)))
 
-    state.games = contendersPairs.reduce((list, pair, index) => ({
+    const games = contendersPairs.reduce((list, pair, index) => ({
       ...list,
       [index + 1]: {
         gameId: index + 1,
@@ -19,30 +24,35 @@ const gamesCreateGames = ({ state, actions }) => {
         },
       },
     }), {})
+
+    dispatch(actions.reducerGamesCreateGames(games))
   } catch (error) {
     console.error(error)
   }
 }
 
-const gamesEditGame = ({ state }, { gameId, matchId, ...values }) => {
+const gamesEditGame = ({ gameId, matchId, ...values }) => {
   try {
+    const state = getState()
     if (state.games[gameId] == null)
       throw new Error('GameId "' + gameId + '" not valid')
 
-    state.games[gameId] = { ...state.games[gameId], ...values }
+    dispatch(actions.reducerGamesEditGame({ gameId, values }))
   } catch (error) {
     console.error(error)
   }
 }
 
-const gamesFinishGame = ({ state, actions }, { gameId }) => {
+const gamesFinishGame = ({ gameId }) => {
   try {
-    state.games[gameId].finished = true
+    dispatch(actions.reducerGamesEditGame({ gameId, values: { finished: true } }))
+
+    const state = getState()
 
     if (Object.values(state.games).filter(game => !game.finished).length === 0)
-      actions.tournamentFinishTournament()
+      functions.tournamentFinishTournament()
     else if (state.games[gameId + 1] != null)
-      actions.navigationChangeNavigation({ gameId: gameId + 1, matchId: 1 })
+      dispatch(actions.navigationEditNavigation({ gameId: gameId + 1, matchId: 1 }))
   } catch (error) {
     console.error(error)
   }

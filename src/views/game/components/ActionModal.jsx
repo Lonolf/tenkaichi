@@ -1,12 +1,12 @@
 import React from 'react'
-import { useOState } from 'overmind/index'
+import { useSelector } from 'react-redux'
 
 import Button from '@material-ui/core/Button'
 
 import translator from 'utility/translator'
 
 const ActionModal = ({ props: { values: { scoreConA, scoreConB } = {}, saveAction = () => {}, actionsEnabled = false } }) => {
-  const state = useOState()
+  const state = useSelector(state => state)
   const gameId = Number(state.navigation.gameId)
   const matchId = Number(state.navigation.matchId)
 

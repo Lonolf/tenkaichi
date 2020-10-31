@@ -1,5 +1,7 @@
 import React from 'react'
-import { useOState } from 'overmind/index'
+
+import { useSelector } from 'react-redux'
+import selectors from 'redux/selectors'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -23,8 +25,7 @@ const useStyles = makeStyles(theme => ({
 
 const ContenderDetails = ({ props: { name, onClose = () => {} } = {} }) => {
   const classes = useStyles()
-  const state = useOState()
-  const results = state.results[name]
+  const results = useSelector(selectors.selectResults)[name]
 
   if (name == null || results == null)
     return null

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { useActions, useOState } from 'overmind/index'
-
+import { useSelector } from 'react-redux'
+import functions from 'redux/functions'
 import Fab from '@material-ui/core/Fab'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -28,8 +28,7 @@ const ContendersSelector = () => {
   const classes = useStyles()
   const [contenders, setContenders] = useState([{ name: '' }])
   const [errors, setErrors] = useState({})
-  const actions = useActions()
-  const state = useOState()
+  const state = useSelector(state => state)
   let easterEggCounter = 0
 
   useEffect(() => {
@@ -40,7 +39,7 @@ const ContendersSelector = () => {
   const easterEgg = () => {
     easterEggCounter++
     if (easterEggCounter > 4)
-      actions.usersGetSwordAcademyUsers()
+      functions.usersGetSwordAcademyUsers()
   }
 
   const filterOptions = () =>
@@ -87,6 +86,7 @@ const ContendersSelector = () => {
       <List>
         <Divider />
         {contenders.map((contender, index) => (
+          /* eslint-disable-next-line */
           <React.Fragment key={index}>
             <ListItem>
               <Autocomplete
@@ -103,6 +103,7 @@ const ContendersSelector = () => {
                   else
                     changeName({ name: option.name || option, index })
                 }}
+                selectOnFocus
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -126,7 +127,7 @@ const ContendersSelector = () => {
       <Fab
         className={classes.fab}
         color='primary'
-        onClick={() => actions.tournamentCreateTournament({ contenders })}
+        onClick={() => functions.tournamentCreateTournament({ contenders })}
         disabled={Object.values(errors).filter(error => error != null).length > 0 ||
           contenders.filter(({ name }) => name !== '').length < 2}
       >

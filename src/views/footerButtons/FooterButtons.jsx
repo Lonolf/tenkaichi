@@ -1,7 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { useOState, useActions } from 'overmind/index'
-
+import { useSelector, useDispatch } from 'react-redux'
+import actions from 'redux/actions'
+import functions from 'redux/functions'
 import Typography from '@material-ui/core/Typography'
 import Fab from '@material-ui/core/Fab'
 import Button from '@material-ui/core/Button'
@@ -47,7 +48,7 @@ const useStyles = makeStyles(theme => ({
 
 const FooterButtons = () => {
   const classes = useStyles()
-  const state = useOState()
+  const state = useSelector(state => state)
   const view = state.navigation.view
 
   return (
@@ -76,7 +77,7 @@ const ContendersSelectorButtons = () => {
 
 const ResultsButtons = () => {
   const classes = useStyles()
-  const actions = useActions()
+  const dispatch = useDispatch()
 
   return (
     <>
@@ -86,7 +87,7 @@ const ResultsButtons = () => {
         <Fab
           className={classes.rightFab}
           color='primary'
-          onClick={() => actions.reset()}
+          onClick={() => dispatch(actions.reset())}
         >
           <Refresh />
         </Fab>
@@ -96,8 +97,7 @@ const ResultsButtons = () => {
 }
 
 const MatchButtons = () => {
-  const actions = useActions()
-  const state = useOState()
+  const state = useSelector(state => state)
   const gameId = Number(state.navigation.gameId)
   const matchId = Number(state.navigation.matchId)
 
@@ -114,7 +114,7 @@ const MatchButtons = () => {
               className={classes.fabLeft}
               color='secondary'
               variant='outlined'
-              onClick={() => actions.matchesPauseMatch({ gameId, matchId })}
+              onClick={() => functions.matchesPauseMatch({ gameId, matchId })}
             >
               <Pause />
             </Button>
@@ -125,7 +125,7 @@ const MatchButtons = () => {
               className={classes.fabLeft}
               color='secondary'
               variant='contained'
-              onClick={() => actions.matchesUnpauseMatch({ gameId, matchId })}
+              onClick={() => functions.matchesUnpauseMatch({ gameId, matchId })}
             >
               <PlayArrow />
             </Button>
@@ -140,7 +140,7 @@ const MatchButtons = () => {
             <Fab
               className={classes.fabRight}
               color='primary'
-              onClick={() => actions.matchesStartMatch({ gameId, matchId })}
+              onClick={() => functions.matchesStartMatch({ gameId, matchId })}
             >
               <PlayArrow />
             </Fab>
@@ -150,7 +150,7 @@ const MatchButtons = () => {
             <Fab
               className={classes.fabRight}
               color='primary'
-              onClick={() => actions.matchesFinishMatch({ gameId, matchId })}
+              onClick={() => functions.matchesFinishMatch({ gameId, matchId })}
             >
               <Check />
             </Fab>

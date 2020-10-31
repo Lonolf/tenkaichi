@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import { useOState, useActions } from 'overmind/index'
-
+import { useSelector, useDispatch } from 'react-redux'
+import actions from 'redux/actions'
+import functions from 'redux/functions'
 import Typography from '@material-ui/core/Typography'
 
 import ScoreLine from './components/ScoreLine.jsx'
@@ -10,8 +11,8 @@ import ActionModal from './components/ActionModal.jsx'
 import translator from 'utility/translator'
 
 const Game = () => {
-  const state = useOState()
-  const actions = useActions()
+  const state = useSelector(state => state)
+  const dispatch = useDispatch()
   const [values, setValues] = useState({ scoreConA: 0, scoreConB: 0 })
   const gameId = Number(state.navigation.gameId)
   const matchId = Number(state.navigation.matchId)
@@ -30,23 +31,23 @@ const Game = () => {
     if (state.settings.actionsButton)
       setValues({ ...values, [scoreName]: values[scoreName] + 1 })
     else
-      actions.matchesEditMatch({ gameId, matchId, [scoreName]: match[scoreName] + 1 })
+      dispatch(actions.matchesEditMatch({ gameId, matchId, [scoreName]: match[scoreName] + 1 }))
   }
 
   const removeScore = ({ scoreName }) => {
     if (state.settings.actionsButton)
       setValues({ ...values, [scoreName]: values[scoreName] - 1 })
     else
-      actions.matchesEditMatch({ gameId, matchId, [scoreName]: match[scoreName] - 1 })
+      dispatch(actions.matchesEditMatch({ gameId, matchId, [scoreName]: match[scoreName] - 1 }))
   }
 
   const saveAction = () => {
-    actions.matchesCreateAction({ gameId, matchId, scoreConA: values.scoreConA, scoreConB: values.scoreConB })
+    dispatch(actions.matchesCreateAction({ gameId, matchId, scoreConA: values.scoreConA, scoreConB: values.scoreConB }))
     setValues({ scoreConA: 0, scoreConB: 0 })
   }
 
   const addAdmonition = ({ name, scoreName }) => {
-    actions.gamesAddAdmonition({ gameId, matchId, name, adversaryScoreName: scoreName === 'scoreConA' ? 'scoreConB' : 'scoreConA' })
+    functions.gamesAddAdmonition({ gameId, matchId, name, adversaryScoreName: scoreName === 'scoreConA' ? 'scoreConB' : 'scoreConA' })
   }
 
   return (

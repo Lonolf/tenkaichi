@@ -1,7 +1,9 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { useActions, useOState } from 'overmind/index'
+import { useSelector, useDispatch } from 'react-redux'
+import actions from 'redux/actions'
+import functions from 'redux/functions'
 
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
@@ -35,14 +37,14 @@ const useStyles = makeStyles((theme) => ({
 
 const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
   const classes = useStyles()
-  const actions = useActions()
-  const state = useOState()
+  const dispatch = useDispatch()
+  const state = useSelector(state => state)
 
   const handleChange = values =>
-    actions.rulesEditRules(values)
+    functions.rulesEditRules(values)
 
   const setRuleset = event =>
-    actions.rulesSetRuleset({ rulesetId: event.target.value })
+    functions.rulesSetRuleset(event.target.value)
 
   const onClose = () => setOpen(false)
 
@@ -136,7 +138,7 @@ const RulesSelector = ({ props: { setOpen = () => {} } = {} }) => {
         <Button
           color='primary'
           variant='contained'
-          onClick={() => actions.navigationChangeNavigation({ view: 'contendersSelector' })}
+          onClick={() => dispatch(actions.navigationEditNavigation({ view: 'contendersSelector' }))}
         >
           {translator.fromLabel('rulesSelector_close_button')}
         </Button>

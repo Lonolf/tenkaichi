@@ -1,12 +1,16 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { useActions, useOState } from 'overmind/index'
+import { useSelector, useDispatch } from 'react-redux'
+import actions from 'redux/actions'
+import functions from 'redux/functions'
 
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
+import Switch from '@material-ui/core/Switch'
+import Toolbar from '@material-ui/core/Toolbar'
 
 import Modal from 'components/modal/Modal.jsx'
 
@@ -29,11 +33,12 @@ const useStyles = makeStyles((theme) => ({
 
 const SettingsSelector = ({ props: { setOpen = () => {} } = {} }) => {
   const classes = useStyles()
-  const actions = useActions()
-  const state = useOState()
+  const dispatch = useDispatch()
+  const state = useSelector(state => state)
 
-  const handleChange = values =>
-    actions.settingsEditSettings(values)
+  const handleChange = values => {
+    functions.settingsEditSettings(values)
+  }
 
   const onClose = () => setOpen(false)
 
@@ -55,11 +60,22 @@ const SettingsSelector = ({ props: { setOpen = () => {} } = {} }) => {
           )}
           label={translator.fromLabel('settingsSelector_actionsButton_label')}
         />
+        <div style={{ flex: '0 0 25px' }} />
+        <Toolbar>
+          {translator.fromLabel('settingsSelector_darkTheme_label')}
+          <Switch
+            checked={state.checkedB}
+            onChange={() => handleChange({ theme: state.settings.theme === 'dark' ? 'light' : 'dark' })}
+            name='theme'
+            color='primary'
+          />
+          {translator.fromLabel('settingsSelector_lightTheme_label')}
+        </Toolbar>
         <div style={{ flex: '1 0 25px' }} />
         <Button
           color='primary'
           variant='contained'
-          onClick={() => actions.navigationChangeNavigation({ view: 'contendersSelector' })}
+          onClick={() => dispatch(actions.navigationEditNavigation({ view: 'contendersSelector' }))}
         >
           {translator.fromLabel('settingsSelector_close_button')}
         </Button>

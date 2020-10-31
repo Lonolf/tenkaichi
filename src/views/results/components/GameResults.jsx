@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useOState } from 'overmind/index'
+import { useSelector } from 'react-redux'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Accordion from '@material-ui/core/Accordion'
@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
 
 const GamesResults = () => {
   const classes = useStyles()
-  const state = useOState()
+  const state = useSelector(state => state)
 
   const displayMatchesResult = ({ game }) =>
     Object.values(game.matches).map(match => match.scoreConA + '-' + match.scoreConB)

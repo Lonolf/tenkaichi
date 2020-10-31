@@ -1,6 +1,5 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { useOState } from 'overmind/index'
 
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
@@ -46,8 +45,6 @@ const ScoreLine = ({
   } = {},
 } = {}) => {
   const classes = useStyles()
-  useOState()
-
   return (
     <div className={classes.scoreContainer}>
       <Divider />

@@ -105,6 +105,8 @@ const settingsSelector = {
   settingsSelector_swordAcademy_label: 'Sword Academy',
   settingsSelector_actionsButton_label: 'Actions button',
   settingsSelector_close_button: 'Close',
+  settingsSelector_darkTheme_label: 'Dark',
+  settingsSelector_lightTheme_label: 'Light',
 }
 
 const footer = {

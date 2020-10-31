@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { useOState } from 'overmind/index'
+import { useSelector } from 'react-redux'
 
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -13,7 +13,7 @@ import RulesSelector from 'views/rulesSelector/RulesSelector.jsx'
 import SettingsSelector from 'views/settingsSelector/SettingsSelector.jsx'
 import Tutorial from 'views/tutorial/Tutorial.jsx'
 
-import { useUpdateParams } from 'hooks'
+// import { useUpdateParams } from 'hooks'
 
 const useStyles = makeStyles(theme => ({
   scrollbars: {
@@ -58,12 +58,12 @@ const useStyles = makeStyles(theme => ({
 
 const ContentManager = () => {
   const classes = useStyles()
-  const updateParams = useUpdateParams()
-  const state = useOState()
+  // const updateParams = useUpdateParams()
+  const state = useSelector(state => state)
   const view = state.navigation.view
 
   useEffect(() => {
-    updateParams({ pathname: '/' })
+    // updateParams({ pathname: '/' })
     // eslint-disable-next-line
   }, [])
 

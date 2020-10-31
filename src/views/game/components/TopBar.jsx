@@ -1,6 +1,8 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { useOState, useActions } from 'overmind/index'
+import { useSelector, useDispatch } from 'react-redux'
+import actions from 'redux/actions'
+import functions from 'redux/functions'
 
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
@@ -32,8 +34,8 @@ const useStyles = makeStyles(theme => ({
 
 const TopBar = () => {
   const classes = useStyles()
-  const actions = useActions()
-  const state = useOState()
+  const dispatch = useDispatch()
+  const state = useSelector(state => state)
 
   const gameId = Number(state.navigation.gameId)
   const matchId = Number(state.navigation.matchId)
@@ -47,13 +49,13 @@ const TopBar = () => {
     <Toolbar className={classes.topBarContainer} disableGutters>
       <Button
         disabled={gameId <= 1}
-        onClick={() => actions.navigationGoPreviousGame()}
+        onClick={() => functions.navigationGoPreviousGame()}
       >
         <FastRewind />
       </Button>
       <Button
         disabled={matchId <= 1}
-        onClick={() => actions.navigationChangeNavigation({ matchId: matchId - 1 })}
+        onClick={() => dispatch(actions.navigationEditNavigation({ matchId: matchId - 1 }))}
       >
         <ArrowLeft />
       </Button>
@@ -63,13 +65,13 @@ const TopBar = () => {
       </Typography>
       <Button
         disabled={game.matches[matchId + 1] == null}
-        onClick={() => actions.navigationChangeNavigation({ matchId: matchId + 1 })}
+        onClick={() => dispatch(actions.navigationEditNavigation({ matchId: matchId + 1 }))}
       >
         <ArrowRight />
       </Button>
       <Button
         disabled={gameId >= Object.keys(state.games).length}
-        onClick={() => actions.navigationGoNextGame()}
+        onClick={() => functions.navigationGoNextGame()}
       >
         <FastForward />
       </Button>

@@ -1,26 +1,28 @@
 {
-  "name": "tenkaichi",
-  "version": "0.1.2",
+  "name": "tenkaichi-2",
+  "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
-    "eslint-config-standard": "^14.1.1",
+    "@reduxjs/toolkit": "^1.4.0",
+    "@testing-library/jest-dom": "^5.11.5",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "firebase": "^7.21.1",
-    "overmind": "^25.0.2",
-    "overmind-react": "^26.0.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "eslint-plugin-standard": "^4.0.2",
+    "firebase": "^8.0.0",
+    "moment": "^2.29.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "uniqid": "^5.2.0"
+    "react-scripts": "4.0.0",
+    "uniqid": "^5.2.0",
+    "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -29,7 +31,10 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "browserslist": {
     "production": [
