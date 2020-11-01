@@ -70,7 +70,7 @@ const ScoreLine = ({
           variant='outlined'
           className={classes.button}
           startIcon={<ThumbDown />}
-          onClick={() => addAdmonition()}
+          onClick={() => addAdmonition({ name, scoreName })}
         >
           {admonitions}
         </Button>
