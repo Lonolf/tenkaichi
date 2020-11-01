@@ -17,18 +17,18 @@ This app will assiste the management of small and big (soon) tournaments for you
 
 - With the rules (📖) and the settings buttons (*), configure your tournaments rules
 - Insert the name of your contenders and press Start (>)
-- Start (>), pause (||) and terminate (✔) every match with the actions button at the bottom
+- Start (>), pause (||) and terminate (✔) every match with the control buttons at the bottom
 
 With action button:
 - Insert the number of points for every contender with the plus (+) and minus (-)
 - Save the action with the central button
 
 Without action button
-- Insert the number of points for every contender with the plus (+) and minus (-)
+- Insert the number of points for every contender with the plus (+) and minus (-).
 
-- When terminating a match, the programm will calculate if a new match is necessary, or if the game is finished
+- When terminating a match, the programm will calculate if a new match is necessary, or if the game is finished.
 
-- When all games are finished, click on a name on the result table to see all the statistics of the contender
+- When all games are finished, click on a name on the result table to see all the statistics of the contender.
 
 ## Features
 
