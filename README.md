@@ -34,10 +34,10 @@ Without action button
 
 - Multiple games and matches managements
 - Automatic points and scores calculation
-- Action-per-action match management
+- Action-per-action match management (done!)
 - Contenders names memory (in device local storage)
-- Settings and rules memor (soon)
-- Associations and federations rules (available, ruleset not defined)
+- Settings and rules memor (done! In device local storage)
+- Associations and federations rules (available, rulesets not defined)
 
 ## Rules supported
 

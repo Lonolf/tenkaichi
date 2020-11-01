@@ -1,8 +1,10 @@
 {
   "extends": [
+    "plugin:react-redux/recommended",
     "./react.js"
   ],
   "plugins": [
+    "react-redux",
     "react"
   ],
   "parserOptions": {

@@ -448,6 +448,8 @@ module.exports = {
     // Prevent usage of UNSAFE_ methods
     // https://github.com/yannickcr/eslint-plugin-react/blob/157cc932be2cfaa56b3f5b45df6f6d4322a2f660/docs/rules/no-unsafe.md
     'react/no-unsafe': 'off',
+
+    'react-redux/useSelector-prefer-selectors': 'off',
   },
 
   settings: {
