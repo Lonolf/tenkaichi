@@ -58,12 +58,17 @@ const gamesFinishGame = ({ gameId }) => {
   }
 }
 
-const gamesAddAdmonition = ({ state }, { gameId, matchId, name, adversaryScoreName }) => {
+const gamesAddAdmonition = ({ gameId, matchId, name, adversaryScoreName }) => {
   try {
-    state.contenders[name].admonitions++
+    let state = getState()
 
-    if (state.contenders[name].admonitions > state.rules.maxAdmonitions)
-      state.games[gameId].matches[matchId][adversaryScoreName]++
+    dispatch(actions.contendersAddAdmonition({ name }))
+    
+    state = getState()
+    if (state.contenders[name].admonitions > state.rules.maxAdmonitions) {
+      const newScore = state.games[gameId].matches[matchId][adversaryScoreName] + 1
+      dispatch(actions.matchesEditMatch({ gameId, matchId, values: { adversaryScoreName: newScore } }))
+    }
   } catch (error) {
     console.error(error)
   }

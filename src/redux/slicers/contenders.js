@@ -5,6 +5,9 @@ export default createSlice({
   initialState: {},
   reducers: {
     contendersCreateContenders: (state, { payload }) => payload,
+    contendersAddAdmonition: (state, { payload: { name } }) => {
+      state[name].admonitions ++
+    },
   },
   extraReducers: {
     reset: () => ({}),
