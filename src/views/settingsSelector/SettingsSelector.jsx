@@ -1,9 +1,8 @@
 import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
-import { useSelector, useDispatch } from 'react-redux'
-import actions from 'redux/actions'
-import functions from 'redux/functions'
+import { useSelector } from 'react-redux'
+import { call, dispatch, actions, functions } from 'domains'
 
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
@@ -33,7 +32,6 @@ const useStyles = makeStyles((theme) => ({
 
 const SettingsSelector = ({ props: { setOpen = () => {} } = {} }) => {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const state = useSelector(state => state)
 
   const handleChange = values => {
@@ -75,7 +73,7 @@ const SettingsSelector = ({ props: { setOpen = () => {} } = {} }) => {
         <Button
           color='primary'
           variant='contained'
-          onClick={() => dispatch(actions.navigationEditNavigation({ view: 'contendersSelector' }))}
+          onClick={() => dispatch(actions.navigationEditNavigation, ({ view: 'contendersSelector' }))}
         >
           {translator.fromLabel('settingsSelector_close_button')}
         </Button>

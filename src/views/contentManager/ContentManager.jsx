@@ -71,12 +71,18 @@ const ContentManager = () => {
     <div className={classes.mainContainer}>
       <div className={`${classes.secondContainer} ${classes.scrollbars}`}>
         {view === 'contendersSelector' ? <MenuBar /> : null}
-        {view === 'contendersSelector' ? <ContendersSelector />
-          : view === 'rulesSelector' ? <RulesSelector />
-            : view === 'settingsSelector' ? <SettingsSelector />
-              : view === 'game' ? <Game />
-                : view === 'results' ? <Results />
-                  : view === 'tutorial' ? <Tutorial />
+        {view === 'contendersSelector'
+          ? <ContendersSelector />
+          : view === 'rulesSelector'
+            ? <RulesSelector />
+            : view === 'settingsSelector'
+              ? <SettingsSelector />
+              : view === 'game'
+                ? <Game />
+                : view === 'results'
+                  ? <Results />
+                  : view === 'tutorial'
+                    ? <Tutorial />
                     : null}
         <FooterButtons />
       </div>

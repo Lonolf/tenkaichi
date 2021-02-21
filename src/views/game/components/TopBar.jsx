@@ -1,8 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { useSelector, useDispatch } from 'react-redux'
-import actions from 'redux/actions'
-import functions from 'redux/functions'
+import { useSelector } from 'react-redux'
+import { dispatch, actions, call, functions } from 'domains'
 
 import Toolbar from '@material-ui/core/Toolbar'
 import Button from '@material-ui/core/Button'
@@ -34,7 +33,6 @@ const useStyles = makeStyles(theme => ({
 
 const TopBar = () => {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const state = useSelector(state => state)
 
   const gameId = Number(state.navigation.gameId)
@@ -49,29 +47,29 @@ const TopBar = () => {
     <Toolbar className={classes.topBarContainer} disableGutters>
       <Button
         disabled={gameId <= 1}
-        onClick={() => functions.navigationGoPreviousGame()}
+        onClick={() => call(functions.navigationGoPreviousGame)}
       >
         <FastRewind />
       </Button>
       <Button
         disabled={matchId <= 1}
-        onClick={() => dispatch(actions.navigationEditNavigation({ matchId: matchId - 1 }))}
+        onClick={() => dispatch(actions.navigationEditNavigation, ({ matchId: matchId - 1 }))}
       >
         <ArrowLeft />
       </Button>
-      <Typography variant='h6'>
+      <Typography variant='body1'>
         {translator.fromLabel('game_title')}
         {' ' + gameId + ' ' + matchId + '/' + state.rules.matches }
       </Typography>
       <Button
         disabled={game.matches[matchId + 1] == null}
-        onClick={() => dispatch(actions.navigationEditNavigation({ matchId: matchId + 1 }))}
+        onClick={() => dispatch(actions.navigationEditNavigation, ({ matchId: matchId + 1 }))}
       >
         <ArrowRight />
       </Button>
       <Button
         disabled={gameId >= Object.keys(state.games).length}
-        onClick={() => functions.navigationGoNextGame()}
+        onClick={() => call(functions.navigationGoNextGame)}
       >
         <FastForward />
       </Button>

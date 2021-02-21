@@ -12,7 +12,6 @@ module.exports = {
   // View link below for react rules documentation
   // https://github.com/yannickcr/eslint-plugin-react#list-of-supported-rules
   rules: {
-    // 'max-len': ["error", { "code": 90 }]
     // Specify whether double or single quotes should be used in JSX attributes
     // https://eslint.org/docs/rules/jsx-quotes
     'jsx-quotes': ['error', 'prefer-single'],
@@ -210,11 +209,7 @@ module.exports = {
 
     // Prevent missing props validation in a React component definition
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md
-    'react/prop-types': [0, {
-      ignore: [],
-      customValidators: [],
-      skipUndeclared: false,
-    }],
+    'react/prop-types': 'off',
 
     // Prevent missing React when using JSX
     // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/react-in-jsx-scope.md
@@ -448,8 +443,6 @@ module.exports = {
     // Prevent usage of UNSAFE_ methods
     // https://github.com/yannickcr/eslint-plugin-react/blob/157cc932be2cfaa56b3f5b45df6f6d4322a2f660/docs/rules/no-unsafe.md
     'react/no-unsafe': 'off',
-
-    'react-redux/useSelector-prefer-selectors': 'off',
   },
 
   settings: {

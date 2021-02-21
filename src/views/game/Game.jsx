@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import actions from 'redux/actions'
-import functions from 'redux/functions'
+import { useSelector } from 'react-redux'
+import { call, functions, dispatch, actions } from 'domains'
 import Typography from '@material-ui/core/Typography'
 
 import ScoreLine from './components/ScoreLine.jsx'
 import TopBar from './components/TopBar.jsx'
+import MenuBar from './components/MenuBar.jsx'
 import ActionModal from './components/ActionModal.jsx'
 
 import translator from 'utility/translator'
 
 const Game = () => {
   const state = useSelector(state => state)
-  const dispatch = useDispatch()
   const [values, setValues] = useState({ scoreConA: 0, scoreConB: 0 })
   const gameId = Number(state.navigation.gameId)
   const matchId = Number(state.navigation.matchId)
@@ -31,28 +30,28 @@ const Game = () => {
     if (state.settings.actionsButton)
       setValues({ ...values, [scoreName]: values[scoreName] + 1 })
     else
-      dispatch(actions.matchesEditMatch({ gameId, matchId, [scoreName]: match[scoreName] + 1 }))
+      dispatch(actions.matchesEditMatch, ({ gameId, matchId, [scoreName]: match[scoreName] + 1 }))
   }
 
   const removeScore = ({ scoreName }) => {
     if (state.settings.actionsButton)
       setValues({ ...values, [scoreName]: values[scoreName] - 1 })
     else
-      dispatch(actions.matchesEditMatch({ gameId, matchId, [scoreName]: match[scoreName] - 1 }))
+      dispatch(actions.matchesEditMatch, ({ gameId, matchId, [scoreName]: match[scoreName] - 1 }))
   }
 
   const saveAction = () => {
-    dispatch(actions.matchesCreateAction({ gameId, matchId, scoreConA: values.scoreConA, scoreConB: values.scoreConB }))
+    dispatch(actions.matchesCreateAction, ({ gameId, matchId, scoreConA: values.scoreConA, scoreConB: values.scoreConB }))
     setValues({ scoreConA: 0, scoreConB: 0 })
   }
 
   const addAdmonition = ({ name, scoreName }) => {
-    functions.gamesAddAdmonition({ gameId, matchId, name, adversaryScoreName: scoreName === 'scoreConA' ? 'scoreConB' : 'scoreConA' })
+    call(functions.gamesAddAdmonition, { gameId, matchId, name, adversaryScoreName: scoreName === 'scoreConA' ? 'scoreConB' : 'scoreConA' })
   }
 
   return (
     <>
-      <TopBar />
+      <MenuBar />
       <div style={{ flex: '3 0 75px' }} />
       <ScoreLine props={{ contender: state.contenders[game.conA], score: match.scoreConA, actionScore: values.scoreConA, scoreName: 'scoreConA', addAdmonition, addScore, removeScore, buttonsDisabled, actionsEnabled }} />
       <div style={{ height: 25 }} />
@@ -68,6 +67,7 @@ const Game = () => {
         ? <Typography>{'Next game: ' + state.games[+gameId + 1].conA + ' vs ' + state.games[+gameId + 1].conB}</Typography>
         : <Typography style={{ fontWeight: 'bold' }}>{translator.fromLabel('game_lastGame_warning')}</Typography>}
       <div style={{ flex: '0 0 30px' }} />
+      <TopBar />
     </>
   )
 }

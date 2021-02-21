@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useSelector } from 'react-redux'
-import selectors from 'redux/selectors'
+import selectors from 'domains/results/selectors'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'

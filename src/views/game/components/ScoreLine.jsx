@@ -58,13 +58,7 @@ const ScoreLine = ({
           <Remove />
         </Button>
         <div className={classes.nameContainer}>
-          <div><Typography>{name}</Typography></div>
-          <div>
-            <Typography>
-              {translator.fromLabel('scoreline_score_label') + score}
-              {actionScore > 0 ? ' +' + actionScore : ''}
-            </Typography>
-          </div>
+          <Typography>{`${name}: ${score} ${actionScore > 0 ? ' +' + actionScore : ''}`}</Typography>
         </div>
         <Button
           variant='outlined'

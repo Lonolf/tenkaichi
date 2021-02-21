@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { useSelector } from 'react-redux'
-import selectors from 'redux/selectors'
+import selectors from 'domains/results/selectors'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Table from '@material-ui/core/Table'
@@ -29,41 +29,61 @@ const ContendersList = () => {
     .sort((a, b) => {
       switch (order) {
         case 'points':
-          return a.points > b.points ? -1
-            : a.points < b.points ? 1
+          return a.points > b.points
+            ? -1
+            : a.points < b.points
+              ? 1
               : a.disparity > b.disparity
-                ? -1 : 1
+                ? -1
+                : 1
         case 'invPoints':
-          return a.points > b.points ? 1
-            : a.points < b.points ? -1
+          return a.points > b.points
+            ? 1
+            : a.points < b.points
+              ? -1
               : a.disparity > b.disparity
-                ? 1 : -1
+                ? 1
+                : -1
         case 'disparity':
           return a.disparity > b.disparity
-            ? -1 : 1
+            ? -1
+            : 1
         case 'invDisparity':
           return a.disparity > b.disparity
-            ? 1 : -1
+            ? 1
+            : -1
         case 'hitsScored':
-          return a.hitsScored > b.hitsScored ? -1
-            : a.hitsScored < b.hitsScored ? 1
+          return a.hitsScored > b.hitsScored
+            ? -1
+            : a.hitsScored < b.hitsScored
+              ? 1
               : a.disparity > b.disparity
-                ? -1 : 1
+                ? -1
+                : 1
         case 'invHitsScored':
-          return a.hitsScored > b.hitsScored ? 1
-            : a.hitsScored < b.hitsScored ? -1
+          return a.hitsScored > b.hitsScored
+            ? 1
+            : a.hitsScored < b.hitsScored
+              ? -1
               : a.disparity > b.disparity
-                ? 1 : -1
+                ? 1
+                : -1
         case 'hitsSuffered':
-          return a.hitsSuffered > b.hitsSuffered ? -1
-            : a.hitsSuffered < b.hitsSuffered ? 1
+          return a.hitsSuffered > b.hitsSuffered
+            ? -1
+            : a.hitsSuffered < b.hitsSuffered
+              ? 1
               : a.disparity > b.disparity
-                ? -1 : 1
+                ? -1
+                : 1
         case 'invHitsSuffered':
-          return a.hitsSuffered > b.hitsSuffered ? +1
-            : a.hitsSuffered < b.hitsSuffered ? -1
+          return a.hitsSuffered > b.hitsSuffered
+            ? +1
+            : a.hitsSuffered < b.hitsSuffered
+              ? -1
               : a.disparity > b.disparity
-                ? 1 : -1
+                ? 1
+                : -1
         case 'name':
           return a.name > b.name ? 1 : -1
         case 'invName':

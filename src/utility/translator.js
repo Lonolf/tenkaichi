@@ -1,9 +1,8 @@
-import { english } from 'locales/english.js'
-import { italian } from 'locales/italian.js'
+import locales from 'locales'
 
 class Translator {
   constructor() {
-    this.language = navigator.language === 'it-IT' ? italian : english
+    this.language = locales[0]
     this.unmatchedLabels = new Set()
     this.printUnmatchedLabels = false // set to true to debug missing label
   }
@@ -12,9 +11,12 @@ class Translator {
     this.language = language
   }
 
-  fromLabel = (label) => {
-    if (this.language[label])
+  fromLabel = (label, ...values) => {
+    if (typeof this.language[label] === 'function')
+      return this.language[label](values)
+    else if (this.language[label] != null)
       return this.language[label]
+
     if (this.printUnmatchedLabels) {
       this.unmatchedLabels.add(label)
       console.log('unmatchedLabels', this.unmatchedLabels)
@@ -30,10 +32,6 @@ class Translator {
     else
       return price
   }
-
-  stringLiteral = ({ label, ...values }) => (
-    this.language[label] ? this.language[label](values) : (label + JSON.stringify(values))
-  )
 }
 
 export default new Translator()

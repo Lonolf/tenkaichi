@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 
-import { useDispatch } from 'react-redux'
-import actions from 'redux/actions'
+import { dispatch, actions } from 'domains'
 import { makeStyles } from '@material-ui/core/styles'
 
 import Tutorial01 from 'assets/img/Tutorial01.png'
@@ -29,7 +28,6 @@ const useStyles = makeStyles(theme => ({
 
 const Tutorial = () => {
   const classes = useStyles()
-  const dispatch = useDispatch()
   const [page, setPage] = useState(0)
 
   const images = [
@@ -40,7 +38,7 @@ const Tutorial = () => {
     if (images[page + 1] != null)
       setPage(page + 1)
     else
-      dispatch(actions.navigationEditNavigation({ view: 'contendersSelector' }))
+      dispatch(actions.navigationEditNavigation, ({ view: 'contendersSelector' }))
   }
 
   return (

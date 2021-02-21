@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { useDispatch } from 'react-redux'
-import actions from 'redux/actions'
+import { dispatch, actions } from 'domains'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
@@ -25,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 
 const MenuBar = () => {
   const classes = useStyles()
-  const dispatch = useDispatch()
 
   return (
     <Toolbar className={classes.toolbar}>
@@ -39,14 +37,14 @@ const MenuBar = () => {
       <Button
         color='secondary'
         variant='outlined'
-        onClick={() => dispatch(actions.navigationEditNavigation({ view: 'rulesSelector' }))}
+        onClick={() => dispatch(actions.navigationEditNavigation, ({ view: 'rulesSelector' }))}
       >
         <MenuBook />
       </Button>
       <Button
         color='secondary'
         variant='outlined'
-        onClick={() => dispatch(actions.navigationEditNavigation({ view: 'settingsSelector' }))}
+        onClick={() => dispatch(actions.navigationEditNavigation, ({ view: 'settingsSelector' }))}
       >
         <Settings />
       </Button>

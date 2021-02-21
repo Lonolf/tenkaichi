@@ -1,8 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import { useSelector, useDispatch } from 'react-redux'
-import actions from 'redux/actions'
-import functions from 'redux/functions'
+import { useSelector } from 'react-redux'
+import { call, functions, dispatch, actions } from 'domains'
 import Typography from '@material-ui/core/Typography'
 import Fab from '@material-ui/core/Fab'
 import Button from '@material-ui/core/Button'
@@ -53,9 +52,12 @@ const FooterButtons = () => {
 
   return (
     <div className={classes.bottomContainer}>
-      {view === 'contendersSelector' ? <ContendersSelectorButtons />
-        : view === 'game' ? <MatchButtons />
-          : view === 'results' ? <ResultsButtons />
+      {view === 'contendersSelector'
+        ? <ContendersSelectorButtons />
+        : view === 'game'
+          ? <MatchButtons />
+          : view === 'results'
+            ? <ResultsButtons />
             : null}
     </div>
   )
@@ -77,7 +79,6 @@ const ContendersSelectorButtons = () => {
 
 const ResultsButtons = () => {
   const classes = useStyles()
-  const dispatch = useDispatch()
 
   return (
     <>
@@ -87,7 +88,7 @@ const ResultsButtons = () => {
         <Fab
           className={classes.rightFab}
           color='primary'
-          onClick={() => dispatch(actions.reset())}
+          onClick={() => dispatch(actions.reset)}
         >
           <Refresh />
         </Fab>
@@ -114,22 +115,24 @@ const MatchButtons = () => {
               className={classes.fabLeft}
               color='secondary'
               variant='outlined'
-              onClick={() => functions.matchesPauseMatch({ gameId, matchId })}
+              onClick={() => call(functions.matchesPauseMatch, { gameId, matchId })}
             >
               <Pause />
             </Button>
-          ) : null}
+            )
+          : null}
         {match.status === 'paused'
           ? (
             <Button
               className={classes.fabLeft}
               color='secondary'
               variant='contained'
-              onClick={() => functions.matchesUnpauseMatch({ gameId, matchId })}
+              onClick={() => call(functions.matchesUnpauseMatch, { gameId, matchId })}
             >
               <PlayArrow />
             </Button>
-          ) : null}
+            )
+          : null}
       </div>
       <div className={classes.center}>
         <MatchTimer props={{ intervals: match.intervals, status: match.status }} />
@@ -140,21 +143,23 @@ const MatchButtons = () => {
             <Fab
               className={classes.fabRight}
               color='primary'
-              onClick={() => functions.matchesStartMatch({ gameId, matchId })}
+              onClick={() => call(functions.matchesStartMatch, { gameId, matchId })}
             >
               <PlayArrow />
             </Fab>
-          ) : null}
+            )
+          : null}
         {match.status === 'ongoing' || match.status === 'paused'
           ? (
             <Fab
               className={classes.fabRight}
               color='primary'
-              onClick={() => functions.matchesFinishMatch({ gameId, matchId })}
+              onClick={() => call(functions.matchesFinishMatch, { gameId, matchId })}
             >
               <Check />
             </Fab>
-          ) : null}
+            )
+          : null}
       </div>
     </>
   )

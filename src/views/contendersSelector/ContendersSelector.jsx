@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 import { useSelector } from 'react-redux'
-import functions from 'redux/functions'
+import { call, functions } from 'domains'
 import Fab from '@material-ui/core/Fab'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
@@ -14,6 +14,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 
 import translator from 'utility/translator'
+import { useLocalStorage } from 'react-use'
 
 const useStyles = makeStyles(theme => ({
   fab: {
@@ -26,7 +27,8 @@ const useStyles = makeStyles(theme => ({
 
 const ContendersSelector = () => {
   const classes = useStyles()
-  const [contenders, setContenders] = useState([{ name: '' }])
+  const [contenders, setContenders] = useLocalStorage('tenkaichi-contenders', [{ name: '' }])
+  // const [contenders, setContenders] = useState([{ name: '' }])
   const [errors, setErrors] = useState({})
   const state = useSelector(state => state)
   let easterEggCounter = 0
@@ -39,7 +41,7 @@ const ContendersSelector = () => {
   const easterEgg = () => {
     easterEggCounter++
     if (easterEggCounter > 4)
-      functions.usersGetSwordAcademyUsers()
+      call(functions.usersGetSwordAcademyUsers)
   }
 
   const filterOptions = () =>
@@ -90,10 +92,11 @@ const ContendersSelector = () => {
           <React.Fragment key={index}>
             <ListItem>
               <Autocomplete
-                id='contenderSelector'
+                id={'contenderSelector' + index}
                 options={filterOptions()}
-                getOptionLabel={option => option.name || option}
+                getOptionLabel={option => option.name ?? option}
                 style={{ width: 300, color: 'white' }}
+                value={contender}
                 freeSolo
                 autoSelect
                 color='primary'
@@ -127,7 +130,7 @@ const ContendersSelector = () => {
       <Fab
         className={classes.fab}
         color='primary'
-        onClick={() => functions.tournamentCreateTournament({ contenders })}
+        onClick={() => call(functions.tournamentCreateTournament, { contenders })}
         disabled={Object.values(errors).filter(error => error != null).length > 0 ||
           contenders.filter(({ name }) => name !== '').length < 2}
       >

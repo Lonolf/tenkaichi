@@ -12,17 +12,15 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(220, 220, 220, 0.5)',
-    zIndex: 100,
+    backgroundColor: theme?.palette?.modal?.main ?? 'lightgrey',
+    zIndex: 2000,
   },
   paper: {
     position: 'absolute',
-    width: '90%',
-    height: '90%',
-    backgroundColor: theme.palette.background.paper,
-    color: theme.palette.background.contrastText,
-    boxShadow: theme.shadows[5],
-    borderRadius: theme.shapes.borderRadius,
+    backgroundColor: theme?.palette?.background?.paper ?? 'grey',
+    boxShadow: theme?.shadows[5] ?? null,
+    borderRadius: 2,
+    padding: theme?.spacing(2, 4, 3) ?? 24,
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -30,12 +28,12 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Modal = ({ children = null, props: { onClose = () => {}, padding = 0 } = {} } = {}) => {
+const Modal = ({ children = null, onClose = () => {} } = {}) => {
   const classes = useStyles()
 
   return (
     <div className={classes.container} onClick={onClose}>
-      <div className={classes.paper} style={{ padding }} onClick={e => e.stopPropagation()}>
+      <div className={classes.paper} onClick={e => e.stopPropagation()}>
         {children}
       </div>
     </div>
